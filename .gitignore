@@ -13,3 +13,5 @@ public/
 build/
 .env*
 site/_themes/hyde/css/styles.min.css
+gh-pages.pub
+gh-pages
