@@ -1,0 +1,19 @@
+  <div role="region" class="sidebar">
+    <div class="container sidebar-sticky">
+      <div class="sidebar-about">
+        <a href="/"><img src="/images/logo.svg" alt="{{ site.title }}" /></a>
+        <p class="lead">{{ site.tagline }}</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="sidebar-nav-item{% if page.url == '/' %} active{% endif %}" href="/">Home</a>
+        {% for item in collections.pages %}
+        <a class="sidebar-nav-item{% if page.url == item.url %} active{% endif %}" href="{{ item.url }}">{{ item.data.title }}</a>
+        {% endfor %}
+        <a class="sidebar-nav-item{{ ' active' if '/recaps' in page.url }}" href="/recaps">Session Recaps</a>
+        <span class="sidebar-nav-item">Currently playing <a href="https://cityofmist.co" rel="noopener" target="_blank">City of Mist</a></span>
+      </nav>
+
+      <p>&copy; {{ site.time | dateFormat('YYYY') }} All rights reserved.</p>
+    </div>
+  </div>

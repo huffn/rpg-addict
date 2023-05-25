@@ -1,0 +1,10 @@
+{% extends "default.njk" %}
+
+{% block content %}
+    <article class="post" data-input-path="{{ page.filePathStem }}">
+      <h1 class="post-title">{{ title }}</h1>
+      <time class="post-date" datetime="{{ dateString | dateISO }}">Session ran: {{ dateString | dateFormat('LL') }}</time>
+{{ content | safe | trim }}
+    </article>
+    <a href="/recaps">Back to session recaps</a>
+{% endblock %}
