@@ -179,7 +179,9 @@ footer {
       &.left {
         display: flex;
         flex-direction: column;
+        @media all and (min-width: $tabletBreakpoint) {
         flex-basis: 410px;
+        }
         @media all and (max-width: $tabletBreakpoint) {
           flex-direction: row;
           align-items: center;
