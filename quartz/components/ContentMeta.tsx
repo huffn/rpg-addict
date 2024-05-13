@@ -25,16 +25,17 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
 
   function ContentMetadata({ cfg, fileData, displayClass }: QuartzComponentProps) {
     const text = fileData.text
+    const showReadingTime = fileData?.frontmatter?.showReadingTime === false ? false : true
 
     if (text) {
       const segments: (string | JSX.Element)[] = []
 
-      if (fileData.dates) {
+      if (fileData.dates && showReadingTime) {
         segments.push(formatDate(getDate(cfg, fileData)!, cfg.locale))
       }
 
       // Display reading time if enabled
-      if (options.showReadingTime) {
+      if (options.showReadingTime && showReadingTime) {
         const { minutes, words: _words } = readingTime(text)
         const displayedTime = i18n(cfg.locale).components.contentMeta.readingTime({
           minutes: Math.ceil(minutes),
