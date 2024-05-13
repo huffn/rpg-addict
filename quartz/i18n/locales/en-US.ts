@@ -30,10 +30,11 @@ export default {
       darkMode: "Dark mode",
     },
     explorer: {
-      title: "Explorer",
+      title: "Posts",
     },
     footer: {
-      createdWith: "Created with",
+      allRights: "All rights reserved.",
+      copyright: "Copyright",
     },
     graph: {
       title: "Graph View",

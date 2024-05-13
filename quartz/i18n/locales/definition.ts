@@ -35,7 +35,8 @@ export interface Translation {
       title: string
     }
     footer: {
-      createdWith: string
+      allRights: string
+      copyright: string
     }
     graph: {
       title: string

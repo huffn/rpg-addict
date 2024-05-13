@@ -98,24 +98,37 @@ a {
 
 .desktop-only {
   display: initial;
-  @media all and (max-width: $fullPageWidth) {
+  @media all and (max-width: $tabletBreakpoint) {
     display: none;
   }
 }
 
 .mobile-only {
   display: none;
-  @media all and (max-width: $fullPageWidth) {
+  @media all and (max-width: $tabletBreakpoint) {
     display: initial;
   }
 }
 
-.page {
-  @media all and (max-width: $fullPageWidth) {
-    margin: 0 auto;
-    padding: 0 1rem;
-    max-width: $pageWidth;
+footer {
+  flex: none;
+  hr {
+    margin-top: 0;
   }
+}
+
+.darkSearch {
+  display: flex;
+  align-items: center;
+  & .search {
+    flex-grow: 1;
+  };
+}
+
+.page {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
 
   & article {
     & > h1 {
@@ -144,70 +157,83 @@ a {
   }
 
   & > #quartz-body {
-    width: 100%;
     display: flex;
-    @media all and (max-width: $fullPageWidth) {
-      flex-direction: column;
+    flex: 1 0 auto;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+
+    @media all and (min-width: $tabletBreakpoint) {
+      flex-direction: row;
     }
 
     & .sidebar {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      top: 0;
-      width: $sidePanelWidth;
-      margin-top: $topSpacing;
-      box-sizing: border-box;
-      padding: 0 4rem;
-      position: fixed;
-      @media all and (max-width: $fullPageWidth) {
-        position: initial;
-        flex-direction: row;
-        padding: 0;
-        width: initial;
-        margin-top: 2rem;
-      }
-    }
+      padding: 1em;
+      padding-bottom: 0;
+      border-radius: 3px;
+      background: rgba(147, 128, 108, 0.1);
 
-    & .sidebar.left {
-      left: calc(calc(100vw - $pageWidth) / 2 - $sidePanelWidth);
-      @media all and (max-width: $fullPageWidth) {
-        gap: 0;
-        align-items: center;
+      @media all and (min-width: $tabletBreakpoint) {
+        flex: 0 0 12em;
       }
-    }
 
-    & .sidebar.right {
-      right: calc(calc(100vw - $pageWidth) / 2 - $sidePanelWidth);
-      flex-wrap: wrap;
-      & > * {
-        @media all and (max-width: $fullPageWidth) {
-          flex: 1;
-          min-width: 140px;
+      &.left {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 410px;
+        @media all and (max-width: $tabletBreakpoint) {
+          flex-direction: row;
+          align-items: center;
+          & .darkSearch {
+            flex-grow: 2;
+          }
+          a svg {
+            width: 263px;
+            height: 100px;
+          }
+        }
+
+        @media all and (max-width: $mobileBreakpoint) {
+          a svg {
+            width: 200px;
+            height: 76px;
+          }
+        }
+
+        & #explorer-content ul.overflow {
+          max-height: calc(100vh - 320px);
         }
       }
     }
   }
 
-  & .page-header {
-    width: $pageWidth;
-    margin: $topSpacing auto 0 auto;
-    @media all and (max-width: $fullPageWidth) {
-      width: initial;
-      margin-top: 2rem;
+  & .center,
+  & footer {
+    padding: 1em;
+  }
+
+  & .center {
+    overflow: scroll;
+    @media all and (min-width: $tabletBreakpoint) {
+      flex: 1;
+      padding: 0 2em;
+      padding-bottom: 0;
+      margin: 0;
     }
   }
 
-  & .center,
   & footer {
-    margin-left: auto;
-    margin-right: auto;
-    width: $pageWidth;
-    @media all and (max-width: $fullPageWidth) {
-      width: initial;
-      margin-left: 0;
-      margin-right: 0;
+    padding-top: 0;
+    @media all and (max-width: $tabletBreakpoint) {
+      flex: 1;
+      padding-top: 0;
+      margin: 0;
+      overflow: hidden;
+      & hr {
+        margin: 0;
+      }
+      & p {
+        margin-top: .5em;
+      }
     }
   }
 }
@@ -499,12 +525,12 @@ ol.overflow {
     content: "";
     width: 100%;
     height: 50px;
-    position: absolute;
+    // position: absolute;
     left: 0;
     bottom: 0;
     opacity: 1;
     transition: opacity 0.3s ease;
-    background: linear-gradient(transparent 0px, var(--light));
+    // background: linear-gradient(transparent 0px, var(--light));
   }
 }
 

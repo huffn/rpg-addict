@@ -69,6 +69,9 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit }: Pr
                 ))}
               </ul>
             </div>
+            <div>
+              {page.description}
+            </div>
           </li>
         )
       })}

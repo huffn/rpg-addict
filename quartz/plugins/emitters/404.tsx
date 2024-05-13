@@ -4,7 +4,7 @@ import BodyConstructor from "../../components/Body"
 import { pageResources, renderPage } from "../../components/renderPage"
 import { FullPageLayout } from "../../cfg"
 import { FilePath, FullSlug } from "../../util/path"
-import { sharedPageComponents } from "../../../quartz.layout"
+import { sharedPageComponents, notFoundPageComponents } from "../../../quartz.layout"
 import { NotFound } from "../../components"
 import { defaultProcessedContent } from "../vfile"
 import { write } from "./helpers"
@@ -15,9 +15,7 @@ export const NotFoundPage: QuartzEmitterPlugin = () => {
   const opts: FullPageLayout = {
     ...sharedPageComponents,
     pageBody: NotFound(),
-    beforeBody: [],
-    left: [],
-    right: [],
+    ...notFoundPageComponents,
   }
 
   const { head: Head, pageBody, footer: Footer } = opts

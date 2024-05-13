@@ -194,11 +194,23 @@ export function renderPage(
   const Header = HeaderConstructor()
   const Body = BodyConstructor()
 
+  const [
+    PageTitle,
+    MobileOnly,
+    Search,
+    Darkmode,
+    DesktopOnly
+  ] = left
+
   const LeftComponent = (
     <div class="left sidebar">
-      {left.map((BodyComponent) => (
-        <BodyComponent {...componentData} />
-      ))}
+      <PageTitle {...componentData} />
+      <MobileOnly {...componentData} />
+      <div class="darkSearch">
+        <Search {...componentData} />
+        <Darkmode {...componentData} />
+      </div>
+      <DesktopOnly {...componentData} />
     </div>
   )
 
@@ -231,9 +243,11 @@ export function renderPage(
                   ))}
                 </div>
               </div>
-              <Content {...componentData} />
+              <div class="center-content">
+                <Content {...componentData} />
+                {RightComponent}
+              </div>
             </div>
-            {RightComponent}
           </Body>
           <Footer {...componentData} />
         </div>

@@ -2,7 +2,7 @@
 
 .search {
   min-width: fit-content;
-  max-width: 14rem;
+  // max-width: 14rem;
   flex-grow: 0.3;
 
   & > #search-icon {
@@ -59,7 +59,7 @@
       margin-left: auto;
       margin-right: auto;
 
-      @media all and (max-width: $fullPageWidth) {
+      @media all and (max-width: $mobileBreakpoint) {
         width: 90%;
       }
 
