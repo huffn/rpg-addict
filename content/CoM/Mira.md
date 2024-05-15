@@ -10,3 +10,8 @@ After an encounter with Richard Jones, Mira took a deadly blow to her face and d
 
 Finding out that Mira, through the power of her rift hadn't died but had been reborn, was a surprise to the 86ers. Now that Mira has more free time on her hands since she no longer works at the hospital due to her unfortunate death, Mira is ready to keep the streets safe from those who would use their power to hurt the people that Mira holds dear.
 ![Mira Eros](MiraReborn.jpg)
+
+## Character Concept
+Her character concept came from this XKCD comic and the Ed Sheeran song Bad Habits.
+![XKCD](CapriSun.png)
+![Bad Habits](BadHabits.mp4)
