@@ -15,4 +15,4 @@ Here is a potential theme song I generated for our campaign.
 ![](SonsOfCatalina.mp4)
 
 Here is a family descendancy chart showing the relationships between the main characters. 
-<!-- ![](Catalina.jpg) -->
+![](Catalina.jpg)
