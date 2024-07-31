@@ -2,7 +2,7 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import { classNames } from "../util/lang"
 import { simplifySlug } from "../util/path"
 
-const NavBar: QuartzComponent = ({ fileData, allFiles, displayClass }: QuartzComponentProps) => {
+const NavBar: QuartzComponent = ({ fileData, allFiles, displayClass, cfg }: QuartzComponentProps) => {
   const currentPage = simplifySlug(fileData.slug!)
   const allFolderPages = allFiles.filter((file) => {
     const slug = simplifySlug(file.slug!)
@@ -20,7 +20,7 @@ const NavBar: QuartzComponent = ({ fileData, allFiles, displayClass }: QuartzCom
     <nav class={classNames(displayClass, "sidebar-nav")}>
         <a class={currentPage == '/' ? "sidebar-nav-item active" : "sidebar-nav-item"} href="/">Home</a>
         {allFolderPages.map(page => <a class={page.active ? "sidebar-nav-item active" : "sidebar-nav-item"} href={`/${page.slug}`}>{page.title}</a>)}
-        <span class="sidebar-nav-item desktop-only">Currently playing <a href="https://cityofmist.co" rel="noopener" target="_blank">City of Mist</a></span>
+        {cfg?.currentlyPlaying && cfg?.currentlyPlayingLink ? <span class="sidebar-nav-item desktop-only">Currently playing <a href={cfg.currentlyPlayingLink} rel="noopener" target="_blank">{cfg.currentlyPlaying}</a></span> : ''}
       </nav>
   )
 }
@@ -29,6 +29,7 @@ NavBar.css = `
 .sidebar-nav {
   padding: 1rem;
   overflow-y: scroll;
+  scrollbar-width: none;
 }
 .sidebar-nav-item {
   display: block;
