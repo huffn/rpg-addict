@@ -3,13 +3,17 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 import style from "./styles/footer.scss"
 import { i18n } from "../i18n"
 
-export default (() => {
+interface Options {
+  links: Record<string, string>
+}
+
+export default ((opts?: Options) => {
   const Footer: QuartzComponent = ({ fileData, displayClass, cfg }: QuartzComponentProps) => {
     const year = new Date().getFullYear()
     const baseDir = pathToRoot(fileData.slug!)
+    const links = opts?.links ?? []
     return (
       <footer class={`${displayClass ?? ""}`}>
-        <hr />
         <p>
           {i18n(cfg.locale).components.footer.copyright}
           {" "}© {year}{" "}
@@ -17,6 +21,13 @@ export default (() => {
           {". "}
           {i18n(cfg.locale).components.footer.allRights}
         </p>
+        <ul>
+          {Object.entries(links).map(([text, link]) => (
+            <li>
+              <a href={link}>{text}</a>
+            </li>
+          ))}
+        </ul>
       </footer>
     )
   }

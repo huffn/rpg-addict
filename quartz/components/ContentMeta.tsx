@@ -1,4 +1,4 @@
-import { formatDate, getDate } from "./Date"
+import { Date, getDate } from "./Date"
 import { QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import readingTime from "reading-time"
 import { classNames } from "../util/lang"
@@ -12,11 +12,13 @@ interface ContentMetaOptions {
    */
   showReadingTime: boolean
   showComma: boolean
+  showDate: boolean
 }
 
 const defaultOptions: ContentMetaOptions = {
-  showReadingTime: true,
+  showReadingTime: false,
   showComma: true,
+  showDate: true,
 }
 
 export default ((opts?: Partial<ContentMetaOptions>) => {
@@ -25,29 +27,30 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
 
   function ContentMetadata({ cfg, fileData, displayClass }: QuartzComponentProps) {
     const text = fileData.text
-    const showReadingTime = fileData?.frontmatter?.showReadingTime === false ? false : true
+
+    const frontmatter = fileData.frontmatter
+
+    const usableOptions: ContentMetaOptions = { ...options, ...frontmatter }
 
     if (text) {
       const segments: (string | JSX.Element)[] = []
 
-      if (fileData.dates && showReadingTime) {
-        segments.push(formatDate(getDate(cfg, fileData)!, cfg.locale))
+      if (usableOptions.showDate && fileData.dates) {
+        segments.push(<Date date={getDate(cfg, fileData)!} locale={cfg.locale} />)
       }
 
       // Display reading time if enabled
-      if (options.showReadingTime && showReadingTime) {
+      if (usableOptions.showReadingTime) {
         const { minutes, words: _words } = readingTime(text)
         const displayedTime = i18n(cfg.locale).components.contentMeta.readingTime({
           minutes: Math.ceil(minutes),
         })
-        segments.push(displayedTime)
+        segments.push(<span>{displayedTime}</span>)
       }
 
-      const segmentsElements = segments.map((segment) => <span>{segment}</span>)
-
       return (
-        <p show-comma={options.showComma} class={classNames(displayClass, "content-meta")}>
-          {segmentsElements}
+        <p show-comma={usableOptions.showComma} class={classNames(displayClass, "content-meta")}>
+          {segments}
         </p>
       )
     } else {

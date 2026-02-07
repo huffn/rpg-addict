@@ -1,10 +1,12 @@
 ---
 title: The Ramblings of an RPG Addict
-showReadingTime: false
+showDate: false
 ---
 
-I think about stories all the time.
+I'm thinking about stories pretty much all the time.
 
-Here are my rambling thoughts on some of the TTRPGs that I've been participating in recently.
+Lately I’ve been wrapped up in a few TTRPGs, and this is where I dump the thoughts that won’t leave my head — session moments, character stuff, weird ideas, whatever sticks.
 
-I'll also post my thoughts on world building and how to be a better story teller.
+I’ll also share some of my notes on worldbuilding and storytelling. I’m always trying to figure out how to make worlds feel alive and how to tell better stories, whether I’m running a game or just playing in one.
+
+Currently playing [Fabula Ultima](https://www.fabulaultima.com)

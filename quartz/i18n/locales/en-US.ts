@@ -29,10 +29,14 @@ export default {
       lightMode: "Light mode",
       darkMode: "Dark mode",
     },
+    readerMode: {
+      title: "Reader mode",
+    },
     explorer: {
-      title: "Posts",
+      title: "Explorer",
     },
     footer: {
+      createdWith: "Created with",
       allRights: "All rights reserved.",
       copyright: "Copyright",
     },
@@ -66,6 +70,7 @@ export default {
     error: {
       title: "Not Found",
       notFound: "Either this page is private or doesn't exist.",
+      home: "Return to Homepage",
     },
     folderContent: {
       folder: "Folder",

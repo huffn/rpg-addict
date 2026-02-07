@@ -1,8 +1,8 @@
 import { Translation, CalloutTranslation } from "./locales/definition"
-import en from "./locales/en-US"
+import enUs from "./locales/en-US"
 
 export const TRANSLATIONS = {
-  "en-US": en
+  "en-US": enUs,
 } as const
 
 export const defaultTranslation = "en-US"

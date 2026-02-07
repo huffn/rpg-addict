@@ -21,6 +21,7 @@ export interface Translation {
     title: string
     description: string
   }
+  direction?: "ltr" | "rtl"
   components: {
     callout: CalloutTranslation
     backlinks: {
@@ -31,10 +32,14 @@ export interface Translation {
       lightMode: string
       darkMode: string
     }
+    readerMode: {
+      title: string
+    }
     explorer: {
       title: string
     }
     footer: {
+      createdWith: string
       allRights: string
       copyright: string
     }
@@ -68,6 +73,7 @@ export interface Translation {
     error: {
       title: string
       notFound: string
+      home: string
     }
     folderContent: {
       folder: string
