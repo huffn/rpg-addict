@@ -9,6 +9,9 @@
 }
 
 .breadcrumb-element {
+  a::first-letter {
+    text-transform: uppercase;
+  }
   p {
     margin: 0;
     margin-left: 0.5rem;

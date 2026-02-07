@@ -9,4 +9,4 @@ Lately I’ve been wrapped up in a few TTRPGs, and this is where I dump the thou
 
 I’ll also share some of my notes on worldbuilding and storytelling. I’m always trying to figure out how to make worlds feel alive and how to tell better stories, whether I’m running a game or just playing in one.
 
-Currently playing [Fabula Ultima](https://www.fabulaultima.com)
+Currently running [Fabula Ultima](https://www.fabulaultima.com)
