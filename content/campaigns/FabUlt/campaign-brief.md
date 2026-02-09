@@ -103,11 +103,10 @@ Primarily **Lux Arcanium**, though motives vary by member nation.
 - **Dhruv** harbors resentment toward Lux Arcanium.
 - Unknown entities connected to the Broken.
 #### Why Each Character Joined
-- One volunteered.
-- One was volunteered by others.
-- One was coerced.
-- One leads the initiative.
-- One joined for personal redemption or justice.
+- James' character volunteered.
+- Jenna's character was volunteered by others.
+- Brandon's character was coerced.
+- Kent's character architected the group.
 ## Next Steps (For Players)
 - Finalize classes (Level 5 total, spanning 2–3 classes)
 - Decide bonds between characters
