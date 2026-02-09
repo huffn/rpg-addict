@@ -2,21 +2,15 @@
 draft: "true"
 title: GM Reference Document
 ---
-# GM Reference Document (Markdown — Spoilers Hidden from Players)
+# _Fabula Ultima — GM Master Reference_
 
-### _Fabula Ultima — GM Master Reference_
-
----
-
-# **GM‑Only Notes: Secrets, Agendas, and Deeper Truths**
+# Secrets, Agendas, and Deeper Truths
 
 ---
-
-# **Truth of the World’s Core**
+## Truth of the World’s Core
 
 The world _is_ a sphere—but beneath the surface lies:
-
-### **The Planetary Engine**
+### The Planetary Engine
 - A mega‑mechanism built by an ancient civilization
 - Powered by **soul‑energy**, harvested from the soulstream
 - Responsible for planetary rotation, tectonics, seasonal flow
@@ -26,7 +20,7 @@ The engine is:
 - Semi-sentient
 - Misaligned or damaged
 - Connected to multiple surface access nodes (one is near the Broken)
-### **Who Built It?**
+### Who Built It?
 Not confirmed, but options include:
 
 - Precursor humans
@@ -37,8 +31,7 @@ Not confirmed, but options include:
 The party will slowly uncover this.
 
 ---
-
-# **The Terminus (The Breaking) — What Actually Happened**
+## The Terminus (The Breaking) — What Actually Happened
 
 The world stopped rotating due to **a system failure in the engine’s stabilizer**, not a natural phenomenon.
 
@@ -52,8 +45,7 @@ Potential causes (choose which path you want):
 Your choice determines antagonist motivations.
 
 ---
-
-# **Five Years Ago — The Shattered Statues**
+## Five Years Ago — The Shattered Statues
 
 This was **a side effect** of a malfunctioning soulstream valve in the planetary engine.
 
@@ -70,10 +62,9 @@ Clues to this truth can appear throughout the world:
 This serves as a breadcrumb toward understanding soulstream harmonics.
 
 ---
+## Regional Agendas (GM Version)
 
-# **Regional Agendas (GM Version)**
-
-## **Radiant Seat**
+### Radiant Seat
 
 **Public face:** Holy arbiters of light  
 **Secretly:**
@@ -83,8 +74,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 - May hide early knowledge of the Terminus
 
 ---
-
-## **Samitra**
+### Samitra
 **Public:** Stoic desert kingdom  
 **Private:**
 - Facing resource collapse
@@ -92,8 +82,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 - Might launch military action if answers don’t come soon
 
 ---
-
-## **Voland Etherium**
+### Voland Etherium
 **Public:** Isolated sky empire  
 **Secret:**
 - Benefited from the Terminus (air currents stabilized)
@@ -102,8 +91,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 - Has a secret order devoted to protecting the status quo
 
 ---
-
-## **Dhruv**
+### Dhruv
 
 **Public:** Forest nation struggling in darkness  
 **Secret:**
@@ -113,8 +101,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 - May shelter an ancient planetary engine access point
 
 ---
-
-## **Savawell Thicket
+### Savawell Thicket
 
 **Public:** A dangerous frontier forest filled with beasts and strange weather.
 **Secret:**
@@ -132,8 +119,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 - Perfect site for early‑campaign “dangerous exploration”
 
 ---
-
-## **Galatea**
+### Galatea
 
 **Public:** Peaceful horse plains  
 **Secret:**
@@ -142,8 +128,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 - Only region to record the exact moment of the Terminus
 
 ---
-
-## **The Broken**
+### The Broken
 
 **Public:** Uncharted  
 **Secret:**
@@ -155,8 +140,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 This is the _late‑campaign reveal zone_.
 
 ---
-
-# **Lux Arcanium**
+### Lux Arcanium
 
 **Public:** Neutral arcane university  
 **Secret:**
@@ -169,69 +153,60 @@ This is the _late‑campaign reveal zone_.
 Excellent source of plot twists and moral dilemmas.
 
 ---
+## Antagonist Options (Choose Based on Tone)
 
-# **Antagonist Options (Choose Based on Tone)**
-
-### **1. Emperor of Voland Etherium**
+### 1. Emperor of Voland Etherium
 - Wants the world static
 - Has airship armadas
 - Possesses partial schematics
-
-### **2. Radical Dhruvian Sect**
+### 2. Radical Dhruvian Sect
 - Blames the academy
 - Wants revenge
 - Uses nature‑twisted magic
-
-### **3. “The Custodians” — Planetary Engine Wardens**
+### 3. “The Custodians” — Planetary Engine Wardens
 - Believe mortals must _not_ restart the engine
 - Could be ancient machines, spirits, or descendants of the Builders
-
-### **4. Lux Arcanium Internal Faction**
+### 4. Lux Arcanium Internal Faction
 - Tried to activate something they shouldn’t
 - Wants the party to succeed… or fail… depending on what you choose
-
-### **5. The Ancient Ones / Remnants in The Broken**
+### 5. The Ancient Ones / Remnants in The Broken
 - Awoke during the Terminus
 - May be guardians or prisoners within the engine itself
 
 ---
+## Campaign Mystery Threads
 
-# **Campaign Mystery Threads**
-
-### **Thread 1 — Why did the engine stop?**
+### Thread 1 — Why did the engine stop?
 Clues across Samitra ruins, Dhruv forests, Voland peaks, and The Broken.
-### **Thread 2 — What is buried in the Savawell Thicket?**
+### Thread 2 — What is buried in the Savawell Thicket?
 Early access to truth about engine leakage.
-### **Thread 3 — What was the soulstream pulse that broke the statues?**
+### Thread 3 — What was the soulstream pulse that broke the statues?
 
-### **Thread 4 — What became of the southern water tribe?**
+### Thread 4 — What became of the southern water tribe?
 Answer lies in a drowned node.
-### **Thread 5 — Who benefits from the Terminus?**
+### Thread 5 — Who benefits from the Terminus?
 Follow the money, food, research, and light.
-### **Thread 6 — How can the rotation be restarted?**
+### Thread 6 — How can the rotation be restarted?
 Eventually leads into the planetary core.
-### **Thread 7 — What happens if the party restarts rotation?**
+### Thread 7 — What happens if the party restarts rotation?
 Not all nations survive such a shock.
 
 ---
+## GM Tools: Session Structure
 
-# **GM Tools: Session Structure**
-
-### **Early Campaign**
+### Early Campaign
 - Local conflicts (Radiant Seat politics, Dhruv accusations)
 - Lux Arcanium investigations
 - First trips into dark zones and light zones
 - Savawell Thicket as first major anomaly site
-
-### **Mid Campaign**
+### Mid Campaign
 - Discovery of engine components
 - Airship diplomacy (& sabotage)
 - Reveal of antagonist motives
 - Samitra ruins
 - Voland Etherium involvement
 - First expedition toward The Broken
-
-### **Late Campaign**
+### Late Campaign
 - Descent into the planetary engine
 - Reveal of who built it
 - Faction war or unity moment
@@ -243,54 +218,43 @@ Not all nations survive such a shock.
 The endgame should reflect the party’s themes.
 
 ---
-
-# **Character Hooks to Use as GM**
-
+## Character Hooks to Use as GM
 These came from Session Zero discussions:
 
-### **Dhruvian Gambler-Swordsman**
-
+### Dhruvian Gambler-Swordsman
 - Ties to Dhruv royalty
 - Carries fate-based motifs
 - Has a reason to distrust both Lux Arcanium AND Voland
 
-### **Samitran Warrior Princess**
-
+### Samitran Warrior Princess
 - Faces crisis of confidence
 - Has status back home depending on accomplishments
 - Samitra’s ruins may contain crucial knowledge
 
-### **Shadow of the Sevenwood**
-
+### Shadow of the Sevenwood
 - Carries an heirloom tied to justice/vengeance
 - Possible assassin past
 - Perfect for morally gray choices in the engine
 
-### **Orator/Ambassador**
-
+### Orator/Ambassador
 - Great for faction diplomacy
 - Might have orders from their government
 - Could be approached by multiple political players
 
 ---
+## Additional Seeds for You (GM Only)
 
-# Additional Seeds for You (GM Only)
-
-### **Prophecy Hook**
-
+### Prophecy Hook
 A prophecy reads:
 
 > _“When the statues break, the world’s heart wakes.”_  
 > Only Galatea knows the full text.
 
-### **Lux Arcanium Secret Archive**
-
+### Lux Arcanium Secret Archive
 The academy stored the last known map showing the world _before_ the Terminus.
 
-### **Voland Etherium’s Sky Code**
-
+### Voland Etherium’s Sky Code
 The air currents reveal patterns only visible from high altitude—clues to the engine’s structure.
 
-### **Dhruv’s Forest Whispers**
-
+### Dhruv’s Forest Whispers
 Trees petrified moments before the Terminus hold trapped soul voices.
