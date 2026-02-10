@@ -87,6 +87,11 @@ export default ((opts?: Partial<FolderContentOptions>) => {
             }
           }
         })
+        .filter((page) => {
+          const tags = page?.frontmatter?.tags ?? []
+          const result = tags.includes("gmOnly") ?? false
+          return result === true
+        })
         .filter((page) => page !== undefined) ?? []
     const cssClasses: string[] = fileData.frontmatter?.cssclasses ?? []
     const classes = cssClasses.join(" ")

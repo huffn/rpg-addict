@@ -32,7 +32,7 @@ export default ((opts?: Partial<TagContentOptions>) => {
     const tag = simplifySlug(slug.slice("tags/".length) as FullSlug)
     const allPagesWithTag = (tag: string) =>
       allFiles.filter((file) =>
-        (file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes).includes(tag),
+        (file.frontmatter?.tags?.includes('gmOnly') === false) && (file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes).includes(tag),
       )
 
     const content = (
@@ -48,6 +48,10 @@ export default ((opts?: Partial<TagContentOptions>) => {
           allFiles.flatMap((data) => data.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes),
         ),
       ].sort((a, b) => a.localeCompare(b))
+
+      // remove gmOnly tag
+      tags.splice(tags.indexOf("gmOnly"), 1)
+
       const tagItemMap: Map<string, QuartzPluginData[]> = new Map()
       for (const tag of tags) {
         tagItemMap.set(tag, allPagesWithTag(tag))

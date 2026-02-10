@@ -46,6 +46,7 @@ function generateSiteMap(cfg: GlobalConfiguration, idx: ContentIndexMap): string
     ${content.date && `<lastmod>${content.date.toISOString()}</lastmod>`}
   </url>`
   const urls = Array.from(idx)
+    .filter(([_, content]) => !content.tags.includes("gmOnly"))
     .map(([slug, content]) => createURLEntry(simplifySlug(slug), content))
     .join("")
   return `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>`
@@ -63,6 +64,7 @@ function generateRSSFeed(cfg: GlobalConfiguration, idx: ContentIndexMap, limit?:
   </item>`
 
   const items = Array.from(idx)
+    .filter(([_, content]) => !content.tags.includes("gmOnly"))
     .sort(([_, f1], [__, f2]) => {
       if (f1.date && f2.date) {
         return f2.date.getTime() - f1.date.getTime()
@@ -103,19 +105,21 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
         const slug = file.data.slug!
         const date = getDate(ctx.cfg.configuration, file.data) ?? new Date()
         if (opts?.includeEmptyFiles || (file.data.text && file.data.text !== "")) {
-          linkIndex.set(slug, {
-            slug,
-            filePath: file.data.relativePath!,
-            title: file.data.frontmatter?.title!,
-            links: file.data.links ?? [],
-            tags: file.data.frontmatter?.tags ?? [],
-            content: file.data.text ?? "",
-            richContent: opts?.rssFullHtml
-              ? escapeHTML(toHtml(tree as Root, { allowDangerousHtml: true }))
-              : undefined,
-            date: date,
-            description: file.data.description ?? "",
-          })
+          if (!(file.data.frontmatter?.tags ?? []).includes("gmOnly")) {
+            linkIndex.set(slug, {
+              slug,
+              filePath: file.data.relativePath!,
+              title: file.data.frontmatter?.title!,
+              links: file.data.links ?? [],
+              tags: file.data.frontmatter?.tags ?? [],
+              content: file.data.text ?? "",
+              richContent: opts?.rssFullHtml
+                ? escapeHTML(toHtml(tree as Root, { allowDangerousHtml: true }))
+                : undefined,
+              date: date,
+              description: file.data.description ?? "",
+            })
+          }
         }
       }
 

@@ -1,9 +1,9 @@
 ---
-draft: "true"
+tags:
+  - FabUlt
+  - gmOnly
 title: GM Reference Document
 ---
-# _Fabula Ultima — GM Master Reference_
-
 # Secrets, Agendas, and Deeper Truths
 
 ---
