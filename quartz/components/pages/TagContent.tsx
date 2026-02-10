@@ -30,10 +30,16 @@ export default ((opts?: Partial<TagContentOptions>) => {
     }
 
     const tag = simplifySlug(slug.slice("tags/".length) as FullSlug)
+
+    const checkIfGmOnly = (tag: string, file: QuartzPluginData) => {
+      if (tag === "gmOnly") {
+        return file.frontmatter?.tags?.includes("gmOnly")
+      }
+      return (!file.frontmatter?.tags?.includes('gmOnly')) && (file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes).includes(tag)
+    }
+
     const allPagesWithTag = (tag: string) =>
-      allFiles.filter((file) =>
-        (file.frontmatter?.tags?.includes('gmOnly') === false) && (file.frontmatter?.tags ?? []).flatMap(getAllSegmentPrefixes).includes(tag),
-      )
+      allFiles.filter((file) => checkIfGmOnly(tag, file))
 
     const content = (
       (tree as Root).children.length === 0
