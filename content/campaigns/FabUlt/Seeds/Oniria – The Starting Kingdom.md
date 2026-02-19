@@ -1,7 +1,7 @@
 ---
 tags:
-  - gmOnly
   - FabUlt
+  - gmOnly
 ---
 A serene and prosperous realm stretches along a wide navigable river, surrounded by ivory walls that project a mighty magical barrier. An elegant castle towers above shimmering azure waterfalls that dive into the lake at the center of this never-conquered capital. Some say there is no safer place in the world. Why would anyone ever leave?
 

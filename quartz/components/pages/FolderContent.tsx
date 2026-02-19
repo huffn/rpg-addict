@@ -45,6 +45,10 @@ export default ((opts?: Partial<FolderContentOptions>) => {
           }
 
           if (node.isFolder && options.showSubfolders) {
+            const noPublicChildren = node?.children.every((child) => child?.data?.frontmatter?.tags?.includes("gmOnly") ?? true)
+            if (noPublicChildren) {
+              return undefined
+            }
             // folders that dont have data need synthetic files
             const getMostRecentDates = (): QuartzPluginData["dates"] => {
               let maybeDates: QuartzPluginData["dates"] | undefined = undefined
@@ -89,7 +93,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
         })
         .filter((page) => {
           const tags = page?.frontmatter?.tags ?? []
-          const result = tags.includes("gmOnly") ?? false
+          const result = tags.includes("gmOnly") ? false : true
           return result === true
         })
         .filter((page) => page !== undefined) ?? []
