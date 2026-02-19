@@ -522,6 +522,10 @@ p {
   line-height: 1.6rem;
 }
 
+p {
+  white-space: pre-wrap;
+}
+
 .table-container {
   overflow-x: auto;
 
