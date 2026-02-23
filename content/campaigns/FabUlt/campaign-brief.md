@@ -1,6 +1,8 @@
 ---
 title: Campaign Brief
-tags: [FabUlt]
+tags:
+  - FabUlt
+date: 2026-02-05
 ---
 ## The World of Fabula Ultima
 A majestic high‑fantasy world infused with JRPG tropes, ancient magi‑tech, and a planet whose very heart is a machine. Cultures feud, magic and technology intertwine, and mysteries stretch back into forgotten ages.
