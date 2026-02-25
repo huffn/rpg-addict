@@ -210,6 +210,9 @@ a {
       row-gap: #{map.get($mobileGrid, rowGap)};
       grid-template-areas: #{map.get($mobileGrid, templateAreas)};
     }
+    @media all and ($desktop) {
+      padding: 0 1rem;
+    }
 
     @media all and not ($desktop) {
       padding: 0 1rem;
@@ -647,4 +650,16 @@ iframe.pdf {
   background: var(--secondary);
   transition: width 0.2s ease;
   z-index: 9999;
+}
+
+body[data-slug="index"] article img[alt="header-image"] {
+    max-height: 300px;
+    object-fit: cover;
+    width: 100vw;
+}
+
+body[data-slug="index"] article:has(img[alt="header-image"]) {
+    p:nth-child(2) {
+        margin-top: -70px;
+    }
 }

@@ -1,7 +1,9 @@
 ---
 title: The Ramblings of an RPG Addict
 showDate: false
+hideTitle: true
 ---
+![header-image](header.png)
 
 I'm thinking about stories pretty much all the time.
 
