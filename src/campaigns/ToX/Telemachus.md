@@ -3,7 +3,7 @@ title: Telemachus
 tags: [ToX]
 ---
 
-![Telemachus](/assets/telemachus.png)
+![Telemachus](src/assets/telemachus.png)
 
 ## General Description
 An exiled noble from Del Bar turned farmer, Telemachus prefers finding peaceful solutions to his problems since it was the fear of violence that got his family exiled in the first place.
