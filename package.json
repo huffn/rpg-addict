@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@11ty/eleventy-navigation": "^1.0.5",
-    "@awesome.me/buildawesome": "4.0.0-alpha.8",
+    "@awesome.me/buildawesome": "4.0.0-alpha.10",
     "canvas": "^3.2.3",
     "cheerio": "^1.2.0",
     "luxon": "^3.7.2",
@@ -22,5 +22,8 @@
   },
   "devDependencies": {
     "pagefind": "^1.5.2"
+  },
+  "allowScripts": {
+    "canvas@3.2.3": true
   }
 }

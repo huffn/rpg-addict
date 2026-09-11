@@ -36,6 +36,11 @@ export default function (eleventyConfig) {
     return updatedContent;
   });
 
+  eleventyConfig.addTransform('assetPaths', function (content) {
+    if (!this.page.outputPath?.endsWith('.html')) return content;
+    return content.replace(/(src|href)="src\/assets\//g, '$1="/assets/');
+  });
+
   eleventyConfig.addFilter('readableDate', (dateObj) => {
     if (!dateObj) return '';
     return new Intl.DateTimeFormat('en', {

@@ -1,6 +1,6 @@
 ---
 title: 'Ramblings of an RPG Addict'
-hero_image: '/assets/header.png'
+hero_image: 'src/assets/header.png'
 hero_image_alt: 'Header Image'
 ---
 I'm thinking about stories pretty much all the time.
