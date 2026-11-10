@@ -10,7 +10,7 @@ date: 2026-02-05
 ---
 ## Truth of the World’s Core
 
-The world_is_a sphere—but beneath the surface lies:
+The world _is_ a sphere—but beneath the surface lies:
 ### The Planetary Engine
 - A mega‑mechanism built by an ancient civilization
 - Powered by **soul‑energy**, harvested from the soulstream
@@ -37,10 +37,10 @@ The party will slowly uncover this.
 The world stopped rotating due to **a system failure in the engine’s stabilizer**, not a natural phenomenon.
 
 Potential causes (choose which path you want):
-1. **Sabotage** — Voland Etherium or Dhruv extremists
+1. **Sabotage** — Volund Etherium or Dhruv extremists
 2. **Sealed Emergency Protocol** — the machine entered a failsafe mode
 3. **Soulstream Imbalance** — corruption / overload
-4. **Tampering by Lux Arcanium** — an arcane experiment gone wrong
+4. **Tampering by Lux Arcanum** — an arcane experiment gone wrong
 5. **The Broken’s Awakening** — something beneath the peninsula caused it
 
 Your choice determines antagonist motivations.
@@ -71,7 +71,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 **Secretly:**
 - Seek to monopolize soul‑energy research
 - May want the world to remain fixed in eternal light zones
-- Have agents observing Lux Arcanium
+- Have agents observing Lux Arcanum
 - May hide early knowledge of the Terminus
 
 ---
@@ -83,7 +83,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 - Might launch military action if answers don’t come soon
 
 ---
-### Voland Etherium
+### Volund Etherium
 **Public:** Isolated sky empire  
 **Secret:**
 - Benefited from the Terminus (air currents stabilized)
@@ -96,7 +96,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 
 **Public:** Forest nation struggling in darkness  
 **Secret:**
-- Radical factions want war with Lux Arcanium
+- Radical factions want war with Lux Arcanum
 - Some elders know the darkness was **not** caused by magic
 - Forest spirits whisper of the Broken’s resurgence
 - May shelter an ancient planetary engine access point
@@ -141,7 +141,7 @@ This serves as a breadcrumb toward understanding soulstream harmonics.
 This is the _late‑campaign reveal zone_.
 
 ---
-### Lux Arcanium
+### Lux Arcanum
 
 **Public:** Neutral arcane university  
 **Secret:**
@@ -156,7 +156,7 @@ Excellent source of plot twists and moral dilemmas.
 ---
 ## Antagonist Options (Choose Based on Tone)
 
-### 1. Emperor of Voland Etherium
+### 1. Emperor of Volund Etherium
 - Wants the world static
 - Has airship armadas
 - Possesses partial schematics
@@ -167,7 +167,7 @@ Excellent source of plot twists and moral dilemmas.
 ### 3. “The Custodians” — Planetary Engine Wardens
 - Believe mortals must _not_ restart the engine
 - Could be ancient machines, spirits, or descendants of the Builders
-### 4. Lux Arcanium Internal Faction
+### 4. Lux Arcanum Internal Faction
 - Tried to activate something they shouldn’t
 - Wants the party to succeed… or fail… depending on what you choose
 ### 5. The Ancient Ones / Remnants in The Broken
@@ -178,7 +178,7 @@ Excellent source of plot twists and moral dilemmas.
 ## Campaign Mystery Threads
 
 ### Thread 1 — Why did the engine stop?
-Clues across Samitra ruins, Dhruv forests, Voland peaks, and The Broken.
+Clues across Samitra ruins, Dhruv forests, Volund peaks, and The Broken.
 ### Thread 2 — What is buried in the Savawell Thicket?
 Early access to truth about engine leakage.
 ### Thread 3 — What was the soulstream pulse that broke the statues?
@@ -197,7 +197,7 @@ Not all nations survive such a shock.
 
 ### Early Campaign
 - Local conflicts (Radiant Seat politics, Dhruv accusations)
-- Lux Arcanium investigations
+- Lux Arcanum investigations
 - First trips into dark zones and light zones
 - Savawell Thicket as first major anomaly site
 ### Mid Campaign
@@ -205,7 +205,7 @@ Not all nations survive such a shock.
 - Airship diplomacy (& sabotage)
 - Reveal of antagonist motives
 - Samitra ruins
-- Voland Etherium involvement
+- Volund Etherium involvement
 - First expedition toward The Broken
 ### Late Campaign
 - Descent into the planetary engine
@@ -225,14 +225,14 @@ These came from Session Zero discussions:
 ### Dhruvian Gambler-Swordsman
 - Ties to Dhruv royalty
 - Carries fate-based motifs
-- Has a reason to distrust both Lux Arcanium AND Voland
+- Has a reason to distrust both Lux Arcanum AND Volund
 
 ### Samitran Warrior Princess
 - Faces crisis of confidence
 - Has status back home depending on accomplishments
 - Samitra’s ruins may contain crucial knowledge
 
-### Shadow of the Sevenwood
+### Shadow of the Savawell Thicket
 - Carries an heirloom tied to justice/vengeance
 - Possible assassin past
 - Perfect for morally gray choices in the engine
@@ -251,10 +251,10 @@ A prophecy reads:
 > _“When the statues break, the world’s heart wakes.”_  
 > Only Galatea knows the full text.
 
-### Lux Arcanium Secret Archive
+### Lux Arcanum Secret Archive
 The academy stored the last known map showing the world _before_ the Terminus.
 
-### Voland Etherium’s Sky Code
+### Volund Etherium’s Sky Code
 The air currents reveal patterns only visible from high altitude—clues to the engine’s structure.
 
 ### Dhruv’s Forest Whispers
