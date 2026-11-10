@@ -47,7 +47,7 @@ An expansive desert empire.
 - Proud martial tradition
 - Tense relations with the Radiant Seat
 - Rumored ancient ruins buried beneath shifting sands
-### Voland Etherium _(Mountain Sky Realm)_
+### Volund Etherium _(Mountain Sky Realm)_
 A breathtaking mountainous region whose peaks breach the upper atmosphere.
 - Skies appear **dark blue or black** at high altitudes
 - Cities cling to impossible cliffs
@@ -58,7 +58,7 @@ A breathtaking mountainous region whose peaks breach the upper atmosphere.
 A dense, vast woodland (some of it petrified or mythically immense).
 - Culture inspired by Indian aesthetics and myth
 - Now in **perpetual darkness**
-- Relations strained with **Lux Arcanium**
+- Relations strained with **Lux Arcanum**
 - A proud, spiritual people whose forests may hold ancient truths
 ### Galatea _(Horse Plains)_
 Endless grasslands and fertile fields.
@@ -76,7 +76,7 @@ A jagged landmass no one successfully surveys.
 - Expeditions vanish
 - The seas around it behave unpredictably
 - Possibly tied to **The Breaking**
-### Lux Arcanium _(Independent Magic Academy)_
+### Lux Arcanum _(Independent Magic Academy)_
 A prestigious magic academy situated on an island in the Astral Sea.
 - Politically neutral (officially)
 - Not directly funded by the Radiant Seat
@@ -87,7 +87,7 @@ A bright, glittering expanse of water near the Radiant Seat.
 - Major trade route
 - Source of myths about light‑touched creatures
 ## Tensions & Threats Across the World
-- **Dhruv vs. Lux Arcanium:** Dhruv believes the academy had a hand in halting the planet.
+- **Dhruv vs. Lux Arcanum:** Dhruv believes the academy had a hand in halting the planet.
 - **Samitra vs. Radiant Seat:** Longstanding political and religious friction.
 - **Desperate Nations:** Dark‑locked regions face starvation and may turn to conquest.
 - **Ancient Technology:** The planet’s core is mechanical—but its origin and operation are lost.
@@ -100,10 +100,10 @@ You are a group gathered to uncover the truth behind the Terminus and—if possi
 - Investigate The Broken, soulstream anomalies, and the ancient planetary engine.
 - Gather knowledge that could save all nations.
 #### Who Sent You?
-Primarily **Lux Arcanium**, though motives vary by member nation.
+Primarily **Lux Arcanum**, though motives vary by member nation.
 #### Who Opposes You?
-- **Voland Etherium’s Emperor** may desire the world _unchanged_.
-- **Dhruv** harbors resentment toward Lux Arcanium.
+- **Volund Etherium’s Emperor** may desire the world _unchanged_.
+- **Dhruv** harbors resentment toward Lux Arcanum.
 - Unknown entities connected to the Broken.
 #### Why Each Character Joined
 - James' character volunteered.
