@@ -2,11 +2,10 @@
 eleventyNavigation:
   key: Campaigns
   order: 1
+title: Campaigns
 ---
+[City of Mist](/campaigns/CoM/)
 
-# Campaigns
-[City of Mist](/Campaigns/CoM/)
+[Tales of Xadia](/campaigns/ToX/)
 
-[Tales of Xadia](/Campaigns/ToX/)
-
-[Fabula Ultima](/Campaigns/FabUlt/)
+[Fabula Ultima](/campaigns/FabUlt/)
