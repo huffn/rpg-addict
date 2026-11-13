@@ -1,9 +1,3 @@
-const rpgSystemNamesMap = {
-  'CoM': 'City of Mist',
-  'ToX': 'Tales of Xadia',
-  'FabUlt': 'Fabula Ultima',
-}
-
 /**
  * Returns back some attributes based on whether the
  * link is active or a parent of an active item
@@ -25,13 +19,6 @@ export function getLinkActiveState(itemUrl, pageUrl) {
 	}
 
 	return response;
-}
-
-export function readableRPGName(name) {
-  if (rpgSystemNamesMap[name]) {
-    return rpgSystemNamesMap[name];
-  }
-  return name;
 }
 
 export function relatedPostsByRecent(posts = [], currentPost, limit = 0) {

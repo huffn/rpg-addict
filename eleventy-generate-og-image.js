@@ -5,52 +5,54 @@ import * as cheerio from "cheerio";
 
 export default async function(eleventyConfig) {
 
-  eleventyConfig.on('eleventy.after', async ({ dir, results }) => {
-    return results.map(async (result) => {
-          if (result.outputPath.endsWith('/index.html')) {
-            const $ = cheerio.load(result.content);
-            const blogTitle = $('body title').text();
-            const title = $('head title').text();
-            const ogUrl = $('meta[property="og:url"]').attr('content');
-            const postDate = $('.post-date').text();
-            const content = $('.page-without-title').text();
-            const buffer = await createImage({ w: 1200, h: 630 }, blogTitle, title, content, postDate);
+  eleventyConfig.on('eleventy.after', async ({ results }) => {
+    registerFont('src/assets/InterVariable.ttf', { family: 'Inter' });
+    const logoBuffer = await sharp('src/assets/logo.png').resize(400).toBuffer();
+    const logo = await loadImage(logoBuffer);
 
+    await Promise.all(results.map(async (result) => {
+      if (!result.outputPath.endsWith('/index.html')) return;
 
+      const $ = cheerio.load(result.content);
+      const title = $('head title').text();
+      const postDate = $('.post-date').text();
 
-            const folder = 'dist' + result.url; // index.html lives here
-            await fs.promises.mkdir(folder, { recursive: true });
-            await fs.promises.writeFile(folder + 'og.png', buffer);
+      // Mark headings with a colon so they read as distinct from the text that follows
+      $('.page-without-title :header').each((_, heading) => {
+        const text = $(heading).text().trim();
+        if (text && !/[:?!.]$/.test(text)) $(heading).append(':');
+      });
 
-          }
-        });
+      // Separate list items with commas, ending each list with a period
+      $('.page-without-title li').each((_, item) => {
+        const $item = $(item);
+        const nestedList = $item.children('ul, ol').first();
+        const ownText = $item.clone().children('ul, ol').remove().end().text().trim();
+        if (!ownText || /[,;:?!.]$/.test(ownText)) return;
+
+        const mark = $item.next('li').length ? ',' : '.';
+        if (nestedList.length) nestedList.before(mark);
+        else $item.append(mark);
+      });
+      const content = $('.page-without-title').text();
+      const buffer = await createImage({ w: 1200, h: 630 }, logo, title, content, postDate);
+
+      const folder = 'dist' + result.url; // index.html lives here
+      await fs.promises.mkdir(folder, { recursive: true });
+      await fs.promises.writeFile(folder + 'og.png', buffer);
+    }));
   });
 
 };
 
-async function createImage(image, blogTitle, title, content, postDate) {
-  const snippet = content
-    .replace(/<[^>]*>/g, '') // Strip HTML tags
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, 250);
-
+async function createImage(image, logo, title, content, postDate) {
   const TITLE_AREA = image.h * 0.4; // 252px
-  const CONTENT_AREA = image.h * 0.6; // 378px
+  const TITLE_MAX_WIDTH = image.w - 120;
 
   const excerpt = content
     .replace(/\s+/g, ' ')
     .trim()
     .slice(0, 180) + '...';
-
-  const logoBuffer = await sharp('src/assets/logo.png')
-    .resize(400)
-    .toBuffer();
-
-  const logo = await loadImage(logoBuffer)
-
-  registerFont('src/assets/InterVariable.ttf', { family: 'Inter' });
-
 
   const canvas = createCanvas(image.w, image.h);
   const ctx = canvas.getContext('2d');
@@ -67,15 +69,15 @@ async function createImage(image, blogTitle, title, content, postDate) {
   ctx.drawImage(logo, image.w - 450, image.h - 182, 400, 152);
 
   // Main title
-  const { fontSize, lines } = fitTitle(ctx, title, image.w - 120, 1);
-  ctx.font = `bold ${fontSize}px Inter`;
+  const { fontSize } = fitTitle(ctx, title, TITLE_MAX_WIDTH, 1);
+  ctx.font = `${fontSize}px Inter`;
 
   const titleBottom = wrapText(
     ctx,
     title,
     60,
     150,
-    image.w - 110,
+    TITLE_MAX_WIDTH,
     85
   );
 
@@ -125,7 +127,7 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines = Infinity) {
     const testLine = line + word + ' ';
 
     if (
-      ctx.measureText(testLine).width > maxWidth &&
+      ctx.measureText(testLine.trim()).width > maxWidth &&
       line
     ) {
       ctx.fillText(line.trim(), x, y);
