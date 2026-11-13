@@ -1,5 +1,6 @@
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import { execSync } from 'child_process';
+import { existsSync } from 'fs';
 import { DateTime } from "luxon";
 import eleventyGenerateOgImage from './eleventy-generate-og-image.js';
 
@@ -31,7 +32,12 @@ export default function (eleventyConfig) {
     const regex = /<img\s+[^>]*src="(.+\.mp4)"\s+[^>]*alt="([^"]*)"[^>]*>/gi;
 
     const updatedContent = content.replace(regex, (match, src, alt) => {
-      return `<video src="${src}" title="${alt}" controls preload="metadata"></video>`;
+      // Use a "<name>-poster.jpg" still next to the video as its thumbnail, if one exists
+      const posterPath = src.replace(/\.mp4$/i, '-poster.jpg');
+      const poster = existsSync(posterPath)
+        ? ` poster="${posterPath.replace(/^src\/assets\//, '/assets/')}"`
+        : '';
+      return `<video src="${src}" title="${alt}"${poster} controls preload="metadata"></video>`;
     });
     return updatedContent;
   });
