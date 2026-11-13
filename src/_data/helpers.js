@@ -36,7 +36,8 @@ export function relatedPostsByRecent(posts = [], currentPost, limit = 0) {
       return post.data.tags.every((tag) =>
         foundPost.data.tags.includes(tag)
       );
-    });
+    })
+    .sort((a, b) => b.date - a.date);
 
   return limit > 0
     ? relatedPosts.slice(0, limit)

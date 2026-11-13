@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>{{ title | escape }}</title>
     <meta property="og:title" content="{{ title | escape }}">
     <meta property="og:description" content="{{ (desc or site.description) | escape }}">
     <meta property="og:type" content="website">
