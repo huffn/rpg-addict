@@ -5,9 +5,6 @@ layout: layouts/character.html
 portrait: src/assets/telemachus.png
 ogImage: src/assets/telemachus.png
 ---
-
-![Telemachus](src/assets/telemachus.png)
-
 ## General Description
 An exiled noble from Del Bar turned farmer, Telemachus prefers finding peaceful solutions to his problems since it was the fear of violence that got his family exiled in the first place.
 
