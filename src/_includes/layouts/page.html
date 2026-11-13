@@ -15,7 +15,7 @@
 </aside>
 {% endif %}
 <!-- Main Article -->
-<article class="page-content" {% if tags and ("gmOnly" not in tags) %}data-pagefind-body{% endif %}>
+<article class="page-content" {% if tags %}data-pagefind-body{% endif %}>
     <h1>{{ title }}</h1>
     {% if date %}<p class="post-date">{{ date | luxonDate('MMMM dd, yyyy') }}</p>{% endif %}
     <div class="page-without-title">

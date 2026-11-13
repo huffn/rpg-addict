@@ -19,9 +19,9 @@ video{
 ## Theme song
 Here is a potential theme song I generated for our campaign.
 
-![](src/assets/SonsOfCatalina.mp4)
+![Sons of Catalina theme song](src/assets/SonsOfCatalina.mp4)
 
 ## Genealogy
 Here is a family descendancy chart showing the relationships between the main characters. 
 
-![](src/assets/Catalina.jpg)
+![Sons of Catalina descendancy chart showing how the main characters are related](src/assets/Catalina.jpg)

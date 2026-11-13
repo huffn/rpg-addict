@@ -31,7 +31,7 @@ export default function (eleventyConfig) {
     const regex = /<img\s+[^>]*src="(.+\.mp4)"\s+[^>]*alt="([^"]*)"[^>]*>/gi;
 
     const updatedContent = content.replace(regex, (match, src, alt) => {
-      return `<video src="${src}" title="${alt}" controls></video>`;
+      return `<video src="${src}" title="${alt}" controls preload="metadata"></video>`;
     });
     return updatedContent;
   });
@@ -61,7 +61,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyGenerateOgImage)
 
   eleventyConfig.on('eleventy.after', async () => {
-    execSync(`npx -y pagefind --site dist`, { encoding: 'utf-8' });
+    execSync(`npx pagefind --site dist`, { encoding: 'utf-8' });
   })
 
 }
