@@ -49,10 +49,7 @@ async function createImage(image, logo, title, content, postDate) {
   const TITLE_AREA = image.h * 0.4; // 252px
   const TITLE_MAX_WIDTH = image.w - 120;
 
-  const excerpt = content
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, 180) + '...';
+  const excerpt = content.replace(/\s+/g, ' ').trim();
 
   const canvas = createCanvas(image.w, image.h);
   const ctx = canvas.getContext('2d');
@@ -118,36 +115,22 @@ async function createImage(image, logo, title, content, postDate) {
 }
 
 
+// Draws text wrapped to maxWidth, returning the y of the last line drawn.
+// Text beyond maxLines is cut at a word boundary and ends with an ellipsis.
 function wrapText(ctx, text, x, y, maxWidth, lineHeight, maxLines = Infinity) {
-  const words = text.split(' ');
-  let line = '';
-  let lineCount = 0;
+  let lines = getWrappedLines(ctx, text, maxWidth);
 
-  for (const word of words) {
-    const testLine = line + word + ' ';
-
-    if (
-      ctx.measureText(testLine.trim()).width > maxWidth &&
-      line
-    ) {
-      ctx.fillText(line.trim(), x, y);
-
-      lineCount++;
-
-      if (lineCount >= maxLines) {
-        ctx.fillText('...', x, y + lineHeight);
-        return y + lineHeight;
-      }
-
-      line = word + ' ';
-      y += lineHeight;
-    } else {
-      line = testLine;
+  if (lines.length > maxLines) {
+    lines = lines.slice(0, maxLines);
+    let last = lines[maxLines - 1].replace(/[\s.,;:…-]+$/, '');
+    while (last.includes(' ') && ctx.measureText(last + '…').width > maxWidth) {
+      last = last.slice(0, last.lastIndexOf(' ')).replace(/[\s.,;:…-]+$/, '');
     }
+    lines[maxLines - 1] = last + '…';
   }
 
-  ctx.fillText(line.trim(), x, y);
-  return y;
+  lines.forEach((line, i) => ctx.fillText(line, x, y + i * lineHeight));
+  return y + (lines.length - 1) * lineHeight;
 }
 
 function getWrappedLines(ctx, text, maxWidth) {

@@ -1,7 +1,7 @@
 ---
 title: 'Ramblings of an RPG Addict'
-hero_image: 'src/assets/header.png'
-hero_image_alt: 'Header Image'
+hero_image: 'src/assets/header.webp'
+hero_image_alt: 'Colorful polyhedral dice and a pencil resting on a red notebook'
 ---
 I'm thinking about stories pretty much all the time.
 
