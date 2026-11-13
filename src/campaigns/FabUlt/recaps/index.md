@@ -1,4 +1,4 @@
 ---
 title: Session Recaps
-layout: layouts/recap.html
+layout: layouts/recap-list.html
 ---

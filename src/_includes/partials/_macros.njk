@@ -1,0 +1,73 @@
+{# Square art, or a striped placeholder until real art exists #}
+{% macro art(src, alt='', cls='') -%}
+{% if src %}<img class="art {{ cls }}" src="{{ src }}" alt="{{ alt }}" loading="lazy">{% else %}<span class="art art-placeholder {{ cls }}" aria-hidden="true"></span>{% endif %}
+{%- endmacro %}
+
+{% macro avatar(member) -%}
+{% if member.portrait %}<img class="avatar" src="{{ member.portrait }}" alt="">{% else %}<span class="avatar" aria-hidden="true">{{ member.name | first }}</span>{% endif %}
+{%- endmacro %}
+
+{# Party list: a panel on desktop; chips on mobile (style = "chips" or "grid") #}
+{% macro party(members, style='chips') -%}
+{% if members and members.length %}
+<section class="panel party party--{{ style }}" aria-labelledby="party-label">
+  <h2 class="label" id="party-label">Party</h2>
+  <ul class="party-list">
+    {% for m in members %}
+    <li>
+      {% if m.page %}
+      <a class="party-row blip" href="{{ m.page }}">{{ avatar(m) }}<span class="party-name">{{ m.name }}</span><span class="cursor" aria-hidden="true">▶</span></a>
+      {% else %}
+      <span class="party-row">{{ avatar(m) }}<span class="party-name">{{ m.name }}</span></span>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{%- endmacro %}
+
+{# Highlighted panel with the next session date #}
+{% macro nextPanel(when, detail='', cls='') -%}
+{% if when %}
+<div class="panel panel--accent next-panel {{ cls }}">
+  <span class="label label--accent">Next session</span>
+  {% if detail %}<span class="next-detail">{{ detail }}</span>{% endif %}
+  <time class="next-date" datetime="{{ when | luxonDate('yyyy-MM-dd') }}">{{ when | luxonDate('ccc, LLL d') }}</time>
+</div>
+{% endif %}
+{%- endmacro %}
+
+{# Sticky chapter / contents list. The desktop panel and the mobile bar + sheet share data-toc links. #}
+{% macro chapters(items, heading='Chapters', sheetNote='') -%}
+{% if items.length %}
+<nav class="panel toc" aria-label="{{ heading }}" data-toc>
+  <h2 class="label">{{ heading }}</h2>
+  <ol class="toc-list">
+    {% for c in items %}
+    <li><a class="toc-link toc-link--h{{ c.level }}" href="#{{ c.id }}"><span class="cursor" aria-hidden="true">▶</span><span>{{ c.text }}</span></a></li>
+    {% endfor %}
+  </ol>
+</nav>
+<div class="toc-bar" data-toc-bar>
+  <button class="toc-bar-btn" type="button" aria-haspopup="dialog" aria-controls="toc-sheet" data-toc-open>
+    <span class="cursor" aria-hidden="true">▶</span>
+    <span class="toc-bar-current" data-toc-current>{{ items[0].text }}</span>
+    <span class="toc-bar-count" data-toc-count>1 / {{ items.length }}</span>
+    <span class="toc-bar-caret" aria-hidden="true">▾</span>
+    <span class="visually-hidden">Show {{ heading | lower }}</span>
+  </button>
+</div>
+<dialog class="sheet" id="toc-sheet" aria-label="{{ heading }}" data-toc>
+  <div class="sheet-panel panel">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <div class="sheet-head"><span class="label">{{ heading }}</span>{% if sheetNote %}<span class="sheet-note">{{ sheetNote }}</span>{% endif %}</div>
+    <ol class="toc-list">
+      {% for c in items %}
+      <li><a class="toc-link toc-link--h{{ c.level }}" href="#{{ c.id }}"><span class="cursor" aria-hidden="true">▶</span><span>{{ c.text }}</span></a></li>
+      {% endfor %}
+    </ol>
+  </div>
+</dialog>
+{% endif %}
+{%- endmacro %}

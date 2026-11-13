@@ -1,4 +1,5 @@
 ---
+session: 21
 tags: [recap, ToX]
 date: 2025-11-20
 ---
@@ -22,7 +23,7 @@ At her house, Vax pops in and says thanks for clearing out the shadow-eater. The
 
 He gives us a ride to Hollow Wood. We jump on Sparky and head over to Lux Area.
 
-While in Hollow Wood Diyan rolls terribly for his quill, but does get his quill back up and running. While that is happening we drop off all the ingredients for the depetrification process.
+While in Hollow Wood Dian rolls terribly for his quill, but does get his quill back up and running. While that is happening we drop off all the ingredients for the depetrification process.
 
 Errol mentions a mage named Merril who could reimbue the gem.
 

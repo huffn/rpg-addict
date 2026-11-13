@@ -1,0 +1,19 @@
+{
+  "campaign": {
+    "key": "fu",
+    "folder": "FabUlt",
+    "name": "Astral Covenant",
+    "system": "Fabula Ultima",
+    "started": "2026-02",
+    "ended": null,
+    "status": "active",
+    "heroImage": "src/assets/FabulaUltima.jpg",
+    "heroAlt": "Astral Covenant – Fabula Ultima",
+    "party": [
+      { "name": "Krish" },
+      { "name": "Sabra" },
+      { "name": "Quinlan" },
+      { "name": "Vien" }
+    ]
+  }
+}

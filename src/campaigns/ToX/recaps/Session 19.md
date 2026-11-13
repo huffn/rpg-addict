@@ -1,4 +1,5 @@
 ---
+session: 19
 tags: [recap, ToX]
 date: 2025-10-16
 ---

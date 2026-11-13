@@ -1,0 +1,36 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+{%- set c = currentCampaign -%}
+{%- set recaps = collections.recap | campaignRecaps(c.folder) | reverse -%}
+{%- set nextDate = c | nextSession(collections.recap | campaignRecaps(c.folder)) -%}
+{%- set latest = recaps | first -%}
+<section class="hero hero--list{% if c.heroImage %} has-image{% endif %}">
+  {% if c.heroImage %}<img class="hero-img" src="{{ c.heroImage }}" alt="" fetchpriority="high">{% endif %}
+</section>
+<main id="main" class="container list-layout">
+  <div class="list-head">
+    <a class="kicker" href="{{ c.url }}">◀ {{ c.name }}</a>
+    <h1 class="page-title">{{ title }}</h1>
+  </div>
+  <div class="panel panel--float list-panel">
+    <ol class="session-list">
+      {% if nextDate %}
+      <li class="session-row session-row--next">
+        <span class="session-num">{{ (latest.data.session + 1) if latest.data.session != null }}</span>
+        <span class="session-title">Next session</span>
+        <time class="session-date" datetime="{{ nextDate | luxonDate('yyyy-MM-dd') }}"><span class="only-wide">{{ nextDate | luxonDate('ccc, LLL d') }}</span><span class="only-narrow">{{ nextDate | luxonDate('cccc, LLL d') }}</span></time>
+      </li>
+      {% endif %}
+      {% for r in recaps %}
+      <li>
+        <a class="session-row blip" href="{{ r.url }}">
+          <span class="session-num">{{ r.data.session if r.data.session != null }}</span>
+          <span class="session-title">{{ r.data.title }}</span>
+          <time class="session-date" datetime="{{ r.date | luxonDate('yyyy-MM-dd') }}">{{ r.date | luxonDate('LLL d, yyyy') }}</time>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</main>
+{% endblock %}

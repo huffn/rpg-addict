@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+{% import "partials/_macros.njk" as ui %}
+{% block body %}
+{%- set c = currentCampaign -%}
+{%- set recaps = collections.recap | campaignRecaps(c.folder) -%}
+{%- set latest = recaps | last -%}
+{%- set nextDate = c | nextSession(recaps) -%}
+{%- set brief = recaps | sessionOf(0) -%}
+<section class="hero hero--campaign{% if c.heroImage %} has-image{% endif %}">
+  {% if c.heroImage %}<img class="hero-img" src="{{ c.heroImage }}" alt="{{ c.heroAlt }}" fetchpriority="high">{% endif %}
+</section>
+<main id="main" class="container campaign-layout">
+  <div class="campaign-main">
+    <div class="panel panel--float title-panel campaign-title">
+      <span class="kicker">{{ kicker }}</span>
+      <h1 class="page-title" data-pagefind-meta="title">{{ c.name }}</h1>
+      {% if c.name != c.system %}<span class="subtitle">{{ c.system }}</span>{% endif %}
+    </div>
+    <div class="prose campaign-body" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}" data-pagefind-meta="kicker:Campaign · {{ c.system }}, accent:{{ c.key }}{% if c.ogImage %}, image:{{ c.ogImage | replace('src/assets/', '/assets/') }}{% endif %}">
+      {{ content | enhance | safe }}
+    </div>
+  </div>
+  <aside class="campaign-aside">
+    <nav class="panel panel--float menu-panel campaign-menu" aria-label="{{ c.name }}">
+      <h2 class="label">Menu</h2>
+      <a class="menu-row blip" href="{{ c.url }}recaps/"><span class="menu-row-title">Session Recaps</span><span class="menu-row-count">{{ recaps | sessionCount }} <span class="only-narrow">▶</span></span></a>
+      {% if brief %}<a class="menu-row blip" href="{{ brief.url }}"><span class="menu-row-title">{{ brief.data.title }}</span><span class="menu-row-count">0</span></a>{% endif %}
+      {% if c.character %}<a class="menu-row menu-row--stack blip" href="{{ c.character.page }}"><span class="label label--accent">Character</span><span class="menu-row-title">{{ c.character.name }}</span></a>{% endif %}
+      {% if latest and latest.data.session != 0 %}<a class="menu-row menu-row--stack blip" href="{{ latest.url }}"><span class="label label--accent">Latest{% if latest.data.session != null %} · {{ latest.data.session }}{% endif %}</span><span class="menu-row-title">{{ latest.data.title }}</span></a>{% endif %}
+    </nav>
+    {{ ui.nextPanel(nextDate, '', 'campaign-next') }}
+    <div class="campaign-party">{{ ui.party(c.party, 'grid') }}</div>
+  </aside>
+</main>
+{% endblock %}

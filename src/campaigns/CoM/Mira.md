@@ -1,6 +1,9 @@
 ---
 title: Mira Eros
 tags: [CoM]
+layout: layouts/character.html
+portrait: src/assets/MiraReborn.jpg
+ogImage: src/assets/MiraReborn.jpg
 ---
 Currently I am playing Mira Eros in a City of Mist campaign. Her rift is Dracula, and she works as the leading doctor in the hematology ward at the local hospital. She has joined forces with others who have learned about the Excision and as the group 86ers and are trying to uncover the secrets hidden within the Mists.
 

@@ -1,10 +1,11 @@
 ---
+session: 9
 tags: [recap, ToX]
 date: 2025-04-24
 ---
 
 ## Story
-Diyan has a dream about when he and Telemachus participated in a tournament where Diyan ended up taking second place.
+Dian has a dream about when he and Telemachus participated in a tournament where Dian ended up taking second place.
 
 Javin was a sunfire elf that Eltha crossed across the desert with. He is the bartender. He suggests we find Nessle the Earth Blood Elf.
 

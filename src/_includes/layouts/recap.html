@@ -1,16 +1,53 @@
 {% extends "layouts/base.html" %}
-{% block content %}
-{% set recapPath = page.filePathStem | replace('/index', '') %}
-<article class="page-content">
-    <h1>{{ title }}</h1>
-    <ul class="page-without-title">
-    {%- for post in collections.all %}
-    {%- if post.filePathStem.startsWith(recapPath) and post.fileSlug != 'index' and post.data.title != 'Session Recaps' %}
-        <li>
-            <a href="{{ post.url }}">{{ post.data.title }}</a>
-        </li>
-    {%- endif %}
-    {%- endfor %}
-    </ul>
-</article>
+{% import "partials/_macros.njk" as ui %}
+{% block body %}
+{%- set c = currentCampaign -%}
+{%- set recaps = collections.recap | campaignRecaps(c.folder) -%}
+{%- set ns = recaps | neighbors(page.url) -%}
+{%- set nextDate = ns.current.data['next-session'] | upcoming if ns.current else null -%}
+{%- set chapterList = content | toc('h2') -%}
+{%- set body = content | enhance -%}
+<section class="hero hero--recap{% if c.heroImage %} has-image{% endif %}">
+  {% if c.heroImage %}<img class="hero-img" src="{{ c.heroImage }}" alt="" fetchpriority="high">{% endif %}
+  <div class="hero-overlay container">
+    <div class="panel panel--float title-panel">
+      <a class="kicker" href="{{ c.url }}recaps/">{{ kicker }}</a>
+      <h1 class="page-title" data-pagefind-meta="title">{{ title }}</h1>
+      <div class="chips">
+        <time class="chip" datetime="{{ date | luxonDate('yyyy-MM-dd') }}">{{ date | luxonDate('LLL d, yyyy') }}</time>
+        <span class="chip">{{ minutes }} min read</span>
+        {% if nextDate and not ns.next %}<span class="chip chip--accent">Next · {{ nextDate | luxonDate('ccc LLL d') }}</span>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+<main id="main" class="container recap-layout">
+  <div class="recap-party">{{ ui.party(c.party, 'chips') }}</div>
+  <div class="recap-toc">{{ ui.chapters(chapterList, 'Chapters', ('Session ' + session) if session != null else '') }}</div>
+  <article class="recap-article">
+    <div class="prose" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}" data-pagefind-meta="kicker:{{ kicker }}, accent:{{ c.key }}{% if c.ogImage %}, image:{{ c.ogImage | replace('src/assets/', '/assets/') }}{% endif %}">
+      {{ body | safe }}
+    </div>
+    <nav class="pager" aria-label="Session navigation">
+      {% if ns.prev %}
+      <a class="pager-box blip" href="{{ ns.prev.url }}" rel="prev">
+        <span class="label">◀ {{ ('Session ' + ns.prev.data.session) if ns.prev.data.session != null else 'Previous' }}</span>
+        <span class="pager-title">{{ ns.prev.data.title }}</span>
+      </a>
+      {% else %}<span></span>{% endif %}
+      {% if ns.next %}
+      <a class="pager-box pager-box--next blip" href="{{ ns.next.url }}" rel="next">
+        <span class="label">{{ ('Session ' + ns.next.data.session) if ns.next.data.session != null else 'Next' }} ▶</span>
+        <span class="pager-title">{{ ns.next.data.title }}</span>
+      </a>
+      {% elif nextDate %}
+      <div class="pager-box pager-box--next pager-box--upcoming">
+        <span class="label label--accent">{{ ('Session ' + (session + 1)) if session != null else 'Next session' }} ▶</span>
+        <span class="pager-title"><time datetime="{{ nextDate | luxonDate('yyyy-MM-dd') }}">{{ nextDate | luxonDate('cccc, LLL d') }}</time></span>
+      </div>
+      {% endif %}
+    </nav>
+    <a class="all-recaps" href="{{ c.url }}recaps/">All {{ c.name }} recaps</a>
+  </article>
+</main>
 {% endblock %}

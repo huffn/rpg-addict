@@ -1,0 +1,30 @@
+{
+  "campaign": {
+    "key": "tox",
+    "folder": "ToX",
+    "system": "Tales of Xadia",
+    "started": "2024-09",
+    "ended": "2026-01",
+    "status": "complete",
+    "character": {
+      "name": "Telemachus",
+      "page": "/campaigns/ToX/Telemachus/"
+    },
+    "party": [
+      {
+        "name": "Telemachus",
+        "page": "/campaigns/ToX/Telemachus/",
+        "portrait": "src/assets/telemachus.png"
+      },
+      {
+        "name": "Hestia"
+      },
+      {
+        "name": "Tressal"
+      },
+      {
+        "name": "Dian"
+      }
+    ]
+  }
+}
