@@ -11,7 +11,7 @@
   {% if c.heroImage %}<img class="hero-img" src="{{ c.heroImage }}" alt="" fetchpriority="high">{% endif %}
   <div class="hero-overlay container">
     <div class="panel panel--float title-panel">
-      <a class="kicker" href="{{ c.url }}recaps/">{{ kicker }}</a>
+      <span class="kicker"><a href="{{ c.url }}">{{ c.name }}</a> · <a href="{{ c.url }}recaps/">{{ ('Session ' + session) if session != null else 'Recaps' }}</a></span>
       <h1 class="page-title" data-pagefind-meta="title">{{ title }}</h1>
       <div class="chips">
         <time class="chip" datetime="{{ date | luxonDate('yyyy-MM-dd') }}">{{ date | luxonDate('LLL d, yyyy') }}</time>
