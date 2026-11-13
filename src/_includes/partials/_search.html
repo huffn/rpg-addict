@@ -1,0 +1,26 @@
+{%- set recent = collections.recap | sort(true, false, 'date') -%}
+<dialog class="search" id="search" aria-label="Search">
+  <div class="search-panel panel" data-search-panel>
+    <div class="search-input-row">
+      <span class="cursor" aria-hidden="true">▶</span>
+      <input class="search-input" type="search" placeholder="Search recaps, characters and posts" aria-label="Search" autocomplete="off" spellcheck="false" data-search-input>
+      <button class="search-esc" type="button" data-search-close>Esc</button>
+      <button class="search-cancel" type="button" data-search-close>Cancel</button>
+    </div>
+    <div class="search-filters" role="group" aria-label="Filter results" data-search-filters hidden></div>
+    <div class="search-results" data-search-results>
+      <div data-search-recent>
+        <h2 class="label search-section">Recent recaps</h2>
+        {% for r in recent.slice(0, 3) %}
+        <a class="recent-row blip" href="{{ r.url }}" data-result data-campaign="{{ r.data.currentCampaign.key }}">
+          <span class="recent-num">{{ r.data.session if r.data.session != null }}</span>
+          <span class="recent-title">{{ r.data.title }}</span>
+          <span class="recent-date">{{ r.date | luxonDate('LLL d, yyyy') }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      <div data-search-list aria-live="polite"></div>
+    </div>
+    <div class="search-foot" aria-hidden="true"><span>↑↓ Select</span><span>↵ Open</span><span>Esc Close</span><span class="search-count" data-search-count></span></div>
+  </div>
+</dialog>

@@ -1,10 +1,25 @@
 <header class="site-header">
-    <div class="container">
-        <div class="logo">
-            <a href='/' aria-label='{{ site.name}} - home' class='site-head__brand'>
-                {% include 'partials/_logo.svg' %}
-            </a>
-        </div>
-        {% include 'partials/_nav.html' %}
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="{{ site.name }}, home">
+      {% include 'partials/_logo.svg' %}
+      <span class="brand-text" aria-hidden="true"><span class="brand-kicker">Ramblings of an</span><span class="brand-name">RPG Addict</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      {% for c in campaigns %}{% if c.status == 'active' %}
+      <a href="{{ c.url }}" data-campaign="{{ c.key }}"{% if section == c.folder %} class="is-current" aria-current="{{ 'page' if page.url == c.url else 'true' }}"{% endif %}>{{ c.name }}</a>
+      {% endif %}{% endfor %}
+      <a href="/campaigns/"{% if section == 'all' %} class="is-current" aria-current="{{ 'page' if page.url == '/campaigns/' else 'true' }}"{% endif %}>All campaigns</a>
+      <a href="/blog/"{% if section == 'blog' %} class="is-current" aria-current="{{ 'page' if page.url == '/blog/' else 'true' }}"{% endif %}>Blog</a>
+      <button class="btn" type="button" data-search-open aria-haspopup="dialog" aria-controls="search">Search<kbd data-search-key>⌘K</kbd></button>
+      <button class="btn" type="button" data-theme-toggle>Light</button>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" type="button" data-search-open aria-haspopup="dialog" aria-controls="search" aria-label="Search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4.5 4.5"/></svg>
+      </button>
+      <button class="icon-btn" type="button" data-menu-open aria-haspopup="dialog" aria-controls="mobile-menu" aria-label="Menu">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+      </button>
     </div>
+  </div>
 </header>

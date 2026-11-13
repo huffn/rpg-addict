@@ -1,6 +1,9 @@
 ---
 title: Telemachus
 tags: [ToX]
+layout: layouts/character.html
+portrait: src/assets/telemachus.png
+ogImage: src/assets/telemachus.png
 ---
 
 ![Telemachus](src/assets/telemachus.png)

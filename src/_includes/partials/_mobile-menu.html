@@ -1,0 +1,43 @@
+<dialog class="mobile-menu" id="mobile-menu" aria-label="Menu">
+  <div class="mobile-menu-head">
+    <a class="brand" href="/" aria-label="{{ site.name }}, home">
+      {% include 'partials/_logo.svg' %}
+      <span class="brand-text" aria-hidden="true"><span class="brand-kicker">Ramblings of an</span><span class="brand-name">RPG Addict</span></span>
+    </a>
+    <button class="icon-btn icon-btn--on" type="button" data-menu-close aria-label="Close menu">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu-body">
+    <button class="menu-search" type="button" data-search-open aria-controls="search">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4.5 4.5"/></svg>
+      Search recaps, characters and posts
+    </button>
+    <nav class="panel menu-panel" aria-label="Main">
+      {% for c in campaigns %}{% if c.status == 'active' %}
+      <a class="menu-row blip{% if section == c.folder %} is-current{% endif %}" href="{{ c.url }}" data-campaign="{{ c.key }}"{% if section == c.folder %} aria-current="true"{% endif %}>
+        <span class="cursor" aria-hidden="true">▶</span>
+        <span class="menu-row-main"><span class="menu-row-title">{{ c.name }}</span>{% if c.name != c.system %}<span class="menu-row-sub">{{ c.system }}</span>{% endif %}</span>
+        <span class="menu-row-tag">Active</span>
+      </a>
+      {% endif %}{% endfor %}
+      <a class="menu-row blip{% if section == 'all' %} is-current{% endif %}" href="/campaigns/"{% if section == 'all' %} aria-current="true"{% endif %}>
+        <span class="cursor" aria-hidden="true">▶</span>
+        <span class="menu-row-main"><span class="menu-row-title">All campaigns</span></span>
+        <span class="menu-row-count">{{ campaigns.length }}</span>
+      </a>
+      <a class="menu-row blip{% if section == 'blog' %} is-current{% endif %}" href="/blog/"{% if section == 'blog' %} aria-current="true"{% endif %}>
+        <span class="cursor" aria-hidden="true">▶</span>
+        <span class="menu-row-main"><span class="menu-row-title">Blog</span></span>
+      </a>
+    </nav>
+    <div class="appearance" role="group" aria-labelledby="appearance-label">
+      <span class="label" id="appearance-label">Appearance</span>
+      <div class="segmented">
+        <button type="button" data-theme-set="system" aria-pressed="true">System</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      </div>
+    </div>
+  </div>
+</dialog>

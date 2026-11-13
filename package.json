@@ -13,7 +13,6 @@
     "build": "npx @awesome.me/buildawesome"
   },
   "dependencies": {
-    "@11ty/eleventy-navigation": "^1.0.5",
     "@awesome.me/buildawesome": "4.0.0-alpha.10",
     "canvas": "^3.2.3",
     "cheerio": "^1.2.0",

@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+{%- set c = currentCampaign -%}
+{%- set recaps = collections.recap | campaignRecaps(c.folder) -%}
+<main id="main" class="container character-layout">
+  <aside class="character-aside">
+    <div class="panel panel--float portrait-panel">
+      {% if portrait %}<img class="portrait" src="{{ portrait }}" alt="{{ title }}">{% endif %}
+      <div class="portrait-text">
+        <span class="kicker">{{ kicker }}</span>
+        <h1 class="page-title" data-pagefind-meta="title">{{ title }}</h1>
+      </div>
+    </div>
+    <nav class="panel menu-panel character-menu" aria-label="{{ c.name }}">
+      <h2 class="label">{{ c.name }}</h2>
+      <a class="menu-row blip" href="{{ c.url }}recaps/"><span class="menu-row-title"><span class="only-narrow">{{ c.name }} recaps</span><span class="only-wide">Session Recaps</span></span><span class="menu-row-count">{{ recaps | sessionCount }} <span class="only-narrow">▶</span></span></a>
+      <a class="menu-row blip" href="{{ c.url }}"><span class="menu-row-title">Campaign page</span><span class="menu-row-count">▶</span></a>
+    </nav>
+  </aside>
+  <article class="prose character-article" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}" data-pagefind-meta="kicker:{{ kicker }}, accent:{{ c.key }}{% if portrait %}, image:{{ portrait | replace('src/assets/', '/assets/') }}{% endif %}">
+    {{ content | enhance | safe }}
+  </article>
+</main>
+{% endblock %}

@@ -1,13 +1,6 @@
 ---
 title: Tales of Xadia
-eleventyNavigation:
-  key: talesOfXadia
-  title: Tales of Xadia
-  order: 2
-  parent: Campaigns
+layout: layouts/campaign.html
 ---
-
-[Session Recaps](/campaigns/ToX/recaps/)
-
 ## Character
 [Character page for Telemachus](Telemachus)

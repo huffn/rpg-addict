@@ -1,5 +1,7 @@
 ---
-title: 0 – Campaign Brief
+session: 0
+title: Campaign Brief
+layout: layouts/recap.html
 tags:
   - FabUlt
   - recap

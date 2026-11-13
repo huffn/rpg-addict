@@ -1,18 +1,7 @@
 ---
 title: "City of Mist"
-eleventyNavigation:
-  key: cityOfMist
-  title: City of Mist
-  order: 1
-  parent: Campaigns
+layout: layouts/campaign.html
 ---
-<style>
-video{
-    width:initial;
-}
-</style>
-[Session Recaps](/campaigns/CoM/recaps/)
-
 ## Character
 [Character page for Mira Eros](Mira)
 

@@ -1,34 +1,52 @@
+{%- set c = currentCampaign -%}
+{%- if page.url.startsWith('/blog/') -%}{%- set section = 'blog' -%}
+{%- elif c and c.status == 'active' -%}{%- set section = c.folder -%}
+{%- elif page.url.startsWith('/campaigns/') -%}{%- set section = 'all' -%}
+{%- else -%}{%- set section = '' -%}{%- endif -%}
+{%- set minutes = content | readingTime if date else null -%}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-campaign="{{ c.key if c else 'fu' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      // Apply the saved or system color mode before first paint
+      (function () {
+        var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
     <title>{{ title | escape }}</title>
     <meta name="description" content="{{ (desc or site.description) | escape }}">
     <meta property="og:title" content="{{ title | escape }}">
     <meta property="og:description" content="{{ (desc or site.description) | escape }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.rpg-addict.com{{ page.url }}">
-      <meta property="og:image" content="https://www.rpg-addict.com{{ page.url }}og.png">
-      <meta property="og:image:width" content="1200">
-      <meta property="og:image:height" content="630">
+    <meta property="og:image" content="https://www.rpg-addict.com{{ page.url }}og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="color-scheme" content="dark light">
+    <link rel="preload" href="/assets/fonts/chakra-petch-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/styles.css">
-    <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet">
-    <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+    <script src="/js/site.js" type="module"></script>
+    <script type="application/json" id="og-data">{{ {
+      kicker: kicker,
+      title: title,
+      date: (date | luxonDate('LLL d, yyyy')) if date else '',
+      minutes: minutes,
+      image: ogImage or (c.ogImage if c else ''),
+      accent: c.key if c else 'fu'
+    } | dump | safe }}</script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     {% include 'partials/_header.html' %}
-    {% if hero_image %}
-    <section class="hero">
-      <img src="{{ hero_image }}" alt="{{ hero_image_alt }}">
-    </section>
-    {% endif %}
-    <main tabindex="-1" class="container layout">
-        <section class="content">
-            {% block content %}
-            {% endblock %}
-        </section>
-    </main>
-    <pagefind-modal></pagefind-modal>
+    {% block body %}{% endblock %}
+    {% include 'partials/_footer.html' %}
+    {% include 'partials/_search.html' %}
+    {% include 'partials/_mobile-menu.html' %}
 </body>
 </html>

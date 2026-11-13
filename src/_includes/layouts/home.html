@@ -1,0 +1,66 @@
+{% extends "layouts/base.html" %}
+{% import "partials/_macros.njk" as ui %}
+{% block body %}
+{%- set active = campaigns | withStatus('active') | first -%}
+{%- set activeRecaps = collections.recap | campaignRecaps(active.folder) if active else [] -%}
+{%- set latest = activeRecaps | last -%}
+{%- set nextDate = active | nextSession(activeRecaps) if active else null -%}
+<section class="hero hero--home has-image">
+  <img class="hero-img" src="{{ hero_image }}" alt="{{ hero_image_alt }}" fetchpriority="high">
+  <div class="hero-overlay container">
+    <div class="panel panel--float title-panel">
+      <h1 class="page-title">{{ site.name }}</h1>
+      <p class="title-desc">{{ site.description }}</p>
+    </div>
+  </div>
+</section>
+<main id="main" class="container home-layout">
+  <div class="home-top">
+    <div class="prose home-intro">{{ content | safe }}</div>
+    {% if active %}
+    <div class="home-side" data-campaign="{{ active.key }}">
+      {{ ui.nextPanel(nextDate, active.name + ((' · Session ' + (latest.data.session + 1)) if latest and latest.data.session != null else ''), 'home-next') }}
+      {% if latest %}
+      <a class="panel card latest-card" href="{{ latest.url }}">
+        {{ ui.art(active.ogImage or active.heroImage, '', 'latest-art') }}
+        <span class="latest-body">
+          <span class="label">Latest recap{% if latest.data.session != null %} · <span class="only-wide">Session </span>{{ latest.data.session }}{% endif %}</span>
+          <span class="latest-title">{{ latest.data.title }}</span>
+          <span class="latest-meta"><span class="only-wide">{{ latest.date | luxonDate('LLL d, yyyy') }} · {{ latest.content | readingTime }} min read</span><span class="read-link">Read ▶</span></span>
+        </span>
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+
+  <section class="home-section" aria-labelledby="home-campaigns">
+    <h2 class="section-label" id="home-campaigns">Campaigns <a href="/campaigns/">All campaigns ▶</a></h2>
+    <ul class="campaign-grid">
+      {% for camp in campaigns %}
+      {%- set count = collections.recap | campaignRecaps(camp.folder) | sessionCount -%}
+      <li data-campaign="{{ camp.key }}">
+        <a class="panel card campaign-card" href="{{ camp.url }}">
+          {{ ui.art(camp.ogImage or camp.heroImage, '', 'campaign-card-art') }}
+          <span class="campaign-card-body">
+            <span class="campaign-card-head"><span class="campaign-card-name">{{ camp.name }}</span><span class="tag{% if camp.status == 'active' %} tag--accent{% endif %}">{{ 'Active' if camp.status == 'active' else 'Complete' }}</span></span>
+            <span class="campaign-card-meta">{% if camp.name != camp.system %}{{ camp.system }} · {% endif %}{{ count }} sessions{% if camp.character %}<span class="only-wide"> · <span class="accent-text">{{ camp.character.name }}</span></span>{% endif %}</span>
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% if collections.blogPosts.length %}
+  <section class="home-section" aria-labelledby="home-blog">
+    <h2 class="section-label" id="home-blog">From the blog</h2>
+    <ul class="post-rows">
+      {% for post in collections.blogPosts %}
+      <li><a class="post-row blip" href="{{ post.url }}"><span class="post-row-title">{{ post.data.title }}</span><time datetime="{{ post.date | luxonDate('yyyy-MM-dd') }}">{{ post.date | luxonDate('LLLL d, yyyy') }}</time></a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</main>
+{% endblock %}

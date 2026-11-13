@@ -1,0 +1,39 @@
+{
+  "campaign": {
+    "key": "com",
+    "folder": "CoM",
+    "system": "City of Mist",
+    "started": "2022-10",
+    "ended": "2024-05",
+    "status": "complete",
+    "character": {
+      "name": "Mira Eros",
+      "page": "/campaigns/CoM/Mira/"
+    },
+    "party": [
+      {
+        "name": "Mira Eros",
+        "page": "/campaigns/CoM/Mira/",
+        "portrait": "src/assets/MiraReborn.jpg"
+      },
+      {
+        "name": "Dante Sinferno"
+      },
+      {
+        "name": "Peya Chessur"
+      },
+      {
+        "name": "Claire Wilder"
+      },
+      {
+        "name": "Jerry DuPointe"
+      },
+      {
+        "name": "Lee Wilder"
+      },
+      {
+        "name": "Triston"
+      }
+    ]
+  }
+}

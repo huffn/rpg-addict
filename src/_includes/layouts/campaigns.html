@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %}
+{% import "partials/_macros.njk" as ui %}
+{% block body %}
+<main id="main" class="container campaigns-layout">
+  <h1 class="page-title">{{ title }}</h1>
+  {% for group in ['active', 'complete'] %}
+  {%- set list = campaigns | withStatus(group) -%}
+  {% if list.length %}
+  <section class="campaigns-group" aria-labelledby="group-{{ group }}">
+    <h2 class="section-label{% if group == 'active' %} section-label--accent{% endif %}" id="group-{{ group }}">{{ group }}</h2>
+    <ul class="{{ 'active-list' if group == 'active' else 'complete-grid' }}">
+      {% for camp in list %}
+      {%- set recaps = collections.recap | campaignRecaps(camp.folder) -%}
+      {%- set latest = recaps | last -%}
+      {%- set nextDate = camp | nextSession(recaps) -%}
+      <li data-campaign="{{ camp.key }}">
+        {% if group == 'active' %}
+        <a class="panel card card--accent active-card" href="{{ camp.url }}">
+          {{ ui.art(camp.ogImage or camp.heroImage, '', 'active-card-art') }}
+          <span class="active-card-body">
+            <span class="tags"><span class="tag tag--system">{{ camp.system }}</span><span class="tag tag--accent">Active</span></span>
+            <span class="active-card-name">{{ camp.name }}</span>
+            <span class="card-meta">{{ recaps | sessionCount }} sessions · {{ camp.started | monthYear }} – now</span>
+            <span class="active-card-extra">
+              {% if latest %}<span>Latest: <span class="strong">{{ latest.data.title }}</span></span>{% endif %}
+              {% if nextDate %}<span>Next: <span class="accent-text">{{ nextDate | luxonDate('ccc, LLL d') }}</span></span>{% endif %}
+            </span>
+          </span>
+        </a>
+        {% else %}
+        <a class="panel card complete-card" href="{{ camp.url }}">
+          {{ ui.art(camp.ogImage or camp.heroImage, '', 'complete-card-art') }}
+          <span class="complete-card-body">
+            <span class="tag tag--system">{{ camp.system }}</span>
+            <span class="complete-card-name">{{ camp.name }}</span>
+            <span class="card-meta">{{ recaps | sessionCount }} sessions{% if camp.started %} · {{ camp.started | monthYear }} – {{ camp.ended | monthYear }}{% endif %}{% if camp.character %} · <span class="accent-text">{{ camp.character.name }}</span>{% endif %}</span>
+          </span>
+        </a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+  {% endfor %}
+</main>
+{% endblock %}

@@ -1,25 +1,13 @@
 {% extends "layouts/base.html" %}
-{% block content %}
-{% set relatedPosts = helpers.relatedPostsByRecent(collections.all, page) %}
-{% if relatedPosts | length > 0 %}
-<!-- Sidebar -->
-<aside class="sidebar">
-    <div class="related">
-        <h5>Related Posts</h5>
-        <ul>
-            {% for relatedPost in relatedPosts %}
-            <li><a href="{{relatedPost.url}}">{{ relatedPost.data.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-</aside>
-{% endif %}
-<!-- Main Article -->
-<article class="page-content" {% if tags %}data-pagefind-body{% endif %}>
-    <h1>{{ title }}</h1>
-    {% if date %}<p class="post-date">{{ date | luxonDate('MMMM dd, yyyy') }}</p>{% endif %}
-    <div class="page-without-title">
-    {{ content | safe}}
-    </div>
-</article>
+{% block body %}
+<main id="main" class="container plain-layout">
+  <div class="panel panel--float title-panel">
+    {% if kicker %}<span class="kicker">{{ kicker }}</span>{% endif %}
+    <h1 class="page-title">{{ title }}</h1>
+    {% if date %}<div class="chips"><time class="chip" datetime="{{ date | luxonDate('yyyy-MM-dd') }}">{{ date | luxonDate('LLLL d, yyyy') }}</time></div>{% endif %}
+  </div>
+  <article class="prose">
+    {{ content | enhance | safe }}
+  </article>
+</main>
 {% endblock %}

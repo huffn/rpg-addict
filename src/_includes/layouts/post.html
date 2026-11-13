@@ -1,0 +1,20 @@
+{% extends "layouts/base.html" %}
+{% import "partials/_macros.njk" as ui %}
+{% block body %}
+{%- set c = currentCampaign -%}
+{%- set contents = content | toc('h2, h3') -%}
+<main id="main" class="container post-layout">
+  <div class="panel panel--float title-panel post-title">
+    <span class="kicker">{{ kicker }}</span>
+    <h1 class="page-title" data-pagefind-meta="title">{{ title }}</h1>
+    <div class="chips">
+      {% if date %}<time class="chip" datetime="{{ date | luxonDate('yyyy-MM-dd') }}">{{ date | luxonDate('LLLL d, yyyy') }}</time>{% endif %}
+      <span class="chip">{{ minutes }} min read</span>
+    </div>
+  </div>
+  <div class="post-toc">{{ ui.chapters(contents, 'Contents') }}</div>
+  <article class="prose post-article" data-pagefind-body data-pagefind-filter="type:Blog" data-pagefind-meta="kicker:Blog, accent:{{ c.key if c else 'fu' }}">
+    {{ content | enhance | safe }}
+  </article>
+</main>
+{% endblock %}

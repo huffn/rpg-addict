@@ -1,8 +1,7 @@
-import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import { execSync } from 'child_process';
-import { existsSync } from 'fs';
 import { DateTime } from "luxon";
 import eleventyGenerateOgImage from './eleventy-generate-og-image.js';
+import * as helpers from './lib/helpers.js';
 
 
 export default function (eleventyConfig) {
@@ -10,11 +9,24 @@ export default function (eleventyConfig) {
   eleventyConfig.setOutputDirectory('./dist');
   // Set directories to pass through to the dist folder
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' });
+  eleventyConfig.addPassthroughCopy({ 'src/js': 'js' });
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   eleventyConfig.amendLibrary('md', (mdLib) => {
     mdLib.set({ html: true, linkify: true, typographer: true });
+
+    // Give h2/h3 headings ids, so chapter lists and search results can link to them
+    mdLib.core.ruler.push('heading_ids', (state) => {
+      const used = new Set();
+      state.tokens.forEach((token, i) => {
+        if (token.type !== 'heading_open' || !['h2', 'h3'].includes(token.tag) || token.attrGet('id')) return;
+        const base = helpers.slugify(state.tokens[i + 1].content) || 'section';
+        let id = base;
+        for (let n = 2; used.has(id); n++) id = `${base}-${n}`;
+        used.add(id);
+        token.attrSet('id', id);
+      });
+    });
   });
 
   eleventyConfig.addGlobalData('eleventyComputed', {
@@ -25,43 +37,52 @@ export default function (eleventyConfig) {
       return cleanedSlug
         .replace(/[-_]+/g, ' ')
         .replace(/\b\w/g, (match) => match.toUpperCase());
-    }
-  });
-
-  eleventyConfig.addTransform('show-video', (content) => {
-    const regex = /<img\s+[^>]*src="(.+\.mp4)"\s+[^>]*alt="([^"]*)"[^>]*>/gi;
-
-    const updatedContent = content.replace(regex, (match, src, alt) => {
-      // Use a "<name>-poster.jpg" still next to the video as its thumbnail, if one exists
-      const posterPath = src.replace(/\.mp4$/i, '-poster.jpg');
-      const poster = existsSync(posterPath)
-        ? ` poster="${posterPath.replace(/^src\/assets\//, '/assets/')}"`
-        : '';
-      return `<video src="${src}" title="${alt}"${poster} controls preload="metadata"></video>`;
-    });
-    return updatedContent;
-  });
-
-  eleventyConfig.addTransform('show-audio', (content) => {
-    const regex = /<img\s+[^>]*src="(.+\.(?:mp3|m4a|ogg|wav))"\s+[^>]*alt="([^"]*)"[^>]*>/gi;
-
-    return content.replace(regex, (match, src, alt) => {
-      return `<audio src="${src}" title="${alt}" controls></audio>`;
-    });
+    },
+    // The campaign a page belongs to: its folder's campaign, or (for blog posts) a campaign tag
+    currentCampaign: (data) => {
+      const all = data.campaigns || [];
+      const folder = data.campaign?.folder ||
+        (data.tags || []).find((tag) => all.some((c) => c.folder === tag));
+      return all.find((c) => c.folder === folder);
+    },
+    // The small uppercase line above a page title (also used on link preview images)
+    kicker: (data) => {
+      const c = data.currentCampaign;
+      const layout = data.layout || '';
+      if (layout.endsWith('/recap.html')) {
+        return [c?.name, data.session != null ? `Session ${data.session}` : null].filter(Boolean).join(' · ');
+      }
+      if (layout.endsWith('/character.html')) return c ? `${c.name} · Character` : 'Character';
+      if (layout.endsWith('/post.html')) return c ? `Blog · ${c.name}` : 'Blog';
+      if (layout.endsWith('/campaign.html')) return `Campaign · ${c?.status === 'active' ? 'Active' : 'Complete'}`;
+      if (layout.endsWith('/recap-list.html')) return c?.name || '';
+      return '';
+    },
   });
 
   eleventyConfig.addTransform('assetPaths', function (content) {
     if (!this.page.outputPath?.endsWith('.html')) return content;
-    return content.replace(/(src|href)="src\/assets\//g, '$1="/assets/');
+    return content.replace(/(src|href|poster)="src\/assets\//g, '$1="/assets/');
   });
 
   eleventyConfig.addFilter('luxonDate', (dateObj, format = 'yyyy-MM-dd') => {
     if (!dateObj) return '';
     return DateTime.fromJSDate(new Date(dateObj), { zone: 'utc'}).toFormat(format);
-  })
+  });
+  eleventyConfig.addFilter('readingTime', helpers.readingTime);
+  eleventyConfig.addFilter('toc', helpers.toc);
+  eleventyConfig.addFilter('enhance', helpers.enhance);
+  eleventyConfig.addFilter('campaignRecaps', helpers.campaignRecaps);
+  eleventyConfig.addFilter('sessionCount', helpers.sessionCount);
+  eleventyConfig.addFilter('nextSession', helpers.nextSession);
+  eleventyConfig.addFilter('upcoming', helpers.upcoming);
+  eleventyConfig.addFilter('monthYear', helpers.monthYear);
+  eleventyConfig.addFilter('neighbors', helpers.neighbors);
+  eleventyConfig.addFilter('sessionOf', helpers.sessionOf);
+  eleventyConfig.addFilter('withStatus', helpers.withStatus);
 
   eleventyConfig.addCollection("blogPosts", (collectionApi) => {
-    return collectionApi.getFilteredByTag("blog-post");
+    return collectionApi.getFilteredByTag("blog-post").sort((a, b) => b.date - a.date);
   });
 
   eleventyConfig.addPlugin(eleventyGenerateOgImage)
