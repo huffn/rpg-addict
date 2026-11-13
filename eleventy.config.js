@@ -36,6 +36,14 @@ export default function (eleventyConfig) {
     return updatedContent;
   });
 
+  eleventyConfig.addTransform('show-audio', (content) => {
+    const regex = /<img\s+[^>]*src="(.+\.(?:mp3|m4a|ogg|wav))"\s+[^>]*alt="([^"]*)"[^>]*>/gi;
+
+    return content.replace(regex, (match, src, alt) => {
+      return `<audio src="${src}" title="${alt}" controls></audio>`;
+    });
+  });
+
   eleventyConfig.addTransform('assetPaths', function (content) {
     if (!this.page.outputPath?.endsWith('.html')) return content;
     return content.replace(/(src|href)="src\/assets\//g, '$1="/assets/');
