@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     <meta property="og:title" content="{{ title | escape }}">
-    <meta property="og:description" content="{{ desc | escape }}">
+    <meta property="og:description" content="{{ (desc or site.description) | escape }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.rpg-addict.com{{ page.url }}">
       <meta property="og:image" content="https://www.rpg-addict.com{{ page.url }}og.png">
