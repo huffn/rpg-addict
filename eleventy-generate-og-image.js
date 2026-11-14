@@ -115,7 +115,8 @@ async function createImage({ kicker, title, date, minutes, image, accent }) {
   }
 
   // Title: 84px down to 56px to fit within 3 lines
-  const cleanTitle = String(title || '').replace(/^\d+\s+[–-]\s+/, '');
+  // Keep "Part 3" on one line (City of Mist episodes span several parts)
+  const cleanTitle = String(title || '').replace(/\bPart (\d+)/g, 'Part\u00a0$1');
   let size = 84;
   let lines;
   for (; size >= 56; size -= 2) {
@@ -201,7 +202,7 @@ function ellipsize(ctx, text, maxWidth, spacing) {
 function wrap(ctx, text, maxWidth) {
   const lines = [];
   let line = '';
-  for (const word of text.split(/\s+/).filter(Boolean)) {
+  for (const word of text.split(/[ \t\n]+/).filter(Boolean)) { // not \s, which would split on non-breaking spaces
     const test = line ? `${line} ${word}` : word;
     if (ctx.measureText(test).width > maxWidth && line) {
       lines.push(line);
