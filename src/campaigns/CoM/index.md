@@ -1,5 +1,5 @@
 ---
-title: "City of Mist"
+title: "Sons of Catalina"
 layout: layouts/campaign.html
 ---
 ## Character

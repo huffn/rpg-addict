@@ -24,7 +24,8 @@
       <a class="panel card latest-card" href="{{ latest.url }}">
         {{ ui.art(active.ogImage or active.heroImage, '', 'latest-art') }}
         <span class="latest-body">
-          <span class="label">Latest recap{% if latest.data.session != null %} · <span class="only-wide">Session </span>{{ latest.data.session }}{% endif %}</span>
+          <span class="label">Latest recap</span>
+          <span class="latest-campaign">{{ active.name }}{% if latest.data.session != null %} · Session {{ latest.data.session }}{% endif %}</span>
           <span class="latest-title">{{ latest.data.title }}</span>
           <span class="latest-meta"><span class="only-wide">{{ latest.date | luxonDate('LLL d, yyyy') }} · {{ latest.content | readingTime }} min read</span><span class="read-link">Read ▶</span></span>
         </span>

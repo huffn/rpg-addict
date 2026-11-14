@@ -1,5 +1,5 @@
 ---
-title: Tales of Xadia
+title: The Corrupted Core
 layout: layouts/campaign.html
 ---
 ## Character

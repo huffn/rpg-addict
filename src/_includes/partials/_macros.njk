@@ -71,3 +71,8 @@
 </dialog>
 {% endif %}
 {%- endmacro %}
+
+{# Search result metadata, one field per element (Pagefind reads one key per attribute) #}
+{% macro searchMeta(kicker, accent, image) -%}
+<span hidden data-pagefind-meta="kicker:{{ kicker }}"></span><span hidden data-pagefind-meta="accent:{{ accent }}"></span>{% if image %}<span hidden data-pagefind-meta="image:{{ image | replace('src/assets/', '/assets/') }}"></span>{% endif %}
+{%- endmacro %}

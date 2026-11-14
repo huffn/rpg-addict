@@ -16,7 +16,8 @@
       <h1 class="page-title" data-pagefind-meta="title">{{ c.name }}</h1>
       {% if c.name != c.system %}<span class="subtitle">{{ c.system }}</span>{% endif %}
     </div>
-    <div class="prose campaign-body" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}" data-pagefind-meta="kicker:Campaign · {{ c.system }}, accent:{{ c.key }}{% if c.ogImage %}, image:{{ c.ogImage | replace('src/assets/', '/assets/') }}{% endif %}">
+    <div class="prose campaign-body" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}">
+      {{ ui.searchMeta('Campaign · ' + c.system, c.key, c.ogImage) }}
       {{ content | enhance | safe }}
     </div>
   </div>

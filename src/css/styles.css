@@ -328,6 +328,7 @@ a.session-row:hover { color: var(--tx); }
 .latest-card { display: flex; align-items: stretch; overflow: hidden; }
 .latest-art { width: 128px; height: 128px; flex: none; margin: 12px 0 12px 12px; }
 .latest-body { flex: 1; min-width: 0; padding: 14px 20px 14px 18px; display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+.latest-campaign { font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ac); }
 .latest-title { font-size: 24px; font-weight: 700; line-height: 1.15; color: var(--hd); }
 .latest-meta { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; font-weight: 600; color: var(--mu); }
 .read-link { color: var(--ac); white-space: nowrap; }
@@ -423,7 +424,7 @@ dialog::backdrop { background: rgba(5, 9, 20, .72); }
 .result-head { display: flex; align-items: center; gap: 12px; padding: 10px 12px 4px; }
 .result-head .art { width: 36px; height: 36px; flex: none; }
 .result-title { flex: 1; min-width: 0; font-size: 18px; font-weight: 700; color: var(--hd); }
-.result-kicker { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ac); white-space: nowrap; }
+.result-kicker { max-width: 45%; overflow: hidden; text-overflow: ellipsis; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ac); white-space: nowrap; }
 .result-sub { display: flex; flex-direction: column; gap: 3px; padding: 9px 12px 10px 30px; color: var(--body); text-decoration: none; position: relative; }
 .result-sub:hover { color: var(--body); }
 .result-sub > .cursor { position: absolute; left: 12px; top: 13px; }

@@ -13,7 +13,8 @@
     </div>
   </div>
   <div class="post-toc">{{ ui.chapters(contents, 'Contents') }}</div>
-  <article class="prose post-article" data-pagefind-body data-pagefind-filter="type:Blog" data-pagefind-meta="kicker:Blog, accent:{{ c.key if c else 'fu' }}">
+  <article class="prose post-article" data-pagefind-body data-pagefind-filter="type:Blog">
+    {{ ui.searchMeta('Blog', c.key if c else 'fu') }}
     {{ content | enhance | safe }}
   </article>
 </main>

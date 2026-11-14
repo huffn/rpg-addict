@@ -25,7 +25,8 @@
   <div class="recap-party">{{ ui.party(c.party, 'chips') }}</div>
   <div class="recap-toc">{{ ui.chapters(chapterList, 'Chapters', ('Session ' + session) if session != null else '') }}</div>
   <article class="recap-article">
-    <div class="prose" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}" data-pagefind-meta="kicker:{{ kicker }}, accent:{{ c.key }}{% if c.ogImage %}, image:{{ c.ogImage | replace('src/assets/', '/assets/') }}{% endif %}">
+    <div class="prose" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}">
+      {{ ui.searchMeta(kicker, c.key, c.ogImage) }}
       {{ body | safe }}
     </div>
     <nav class="pager" aria-label="Session navigation">

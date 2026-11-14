@@ -31,6 +31,10 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addGlobalData('eleventyComputed', {
     title: (data) => {
+      // A campaign page is titled with the campaign's own name, not its system
+      if (data.layout?.endsWith('/campaign.html') && data.campaign) {
+        return data.campaign.name || data.campaign.system;
+      }
       if (data.title) return data.title;
       const slug = data.page?.fileSlug || '';
       const cleanedSlug = slug.replace(/^\d{4}-\d{2}-\d{2}-/, '');
@@ -53,7 +57,8 @@ export default function (eleventyConfig) {
         return [c?.name, data.session != null ? `Session ${data.session}` : null].filter(Boolean).join(' · ');
       }
       if (layout.endsWith('/character.html')) return c ? `${c.name} · Character` : 'Character';
-      if (layout.endsWith('/post.html')) return c ? `Blog · ${c.name}` : 'Blog';
+      // Blog posts are about a game system in general, not one campaign
+      if (layout.endsWith('/post.html')) return c ? `Blog · ${c.system}` : 'Blog';
       if (layout.endsWith('/campaign.html')) return `Campaign · ${c?.status === 'active' ? 'Active' : 'Complete'}`;
       if (layout.endsWith('/recap-list.html')) return c?.name || '';
       return '';
@@ -88,7 +93,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyGenerateOgImage)
 
   eleventyConfig.on('eleventy.after', async () => {
-    execSync(`npx pagefind --site dist`, { encoding: 'utf-8' });
+    execSync(`npx pagefind --site dist --glob "**/index.html"`, { encoding: 'utf-8' });
   })
 
 }

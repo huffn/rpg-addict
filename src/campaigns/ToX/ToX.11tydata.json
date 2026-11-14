@@ -2,10 +2,12 @@
   "campaign": {
     "key": "tox",
     "folder": "ToX",
+    "name": "The Corrupted Core",
     "system": "Tales of Xadia",
     "started": "2024-09",
     "ended": "2026-01",
     "status": "complete",
+    "ogImage": "src/assets/TalesOfXadia-square.jpg",
     "character": {
       "name": "Telemachus",
       "page": "/campaigns/ToX/Telemachus/"
