@@ -22,6 +22,8 @@ export default function () {
         name: campaign.name || campaign.system,
         url: `/campaigns/${entry.name}/`,
         party: campaign.party || [],
+        // "character" may be one { name, page } or a list of them (e.g. a solo campaign)
+        characters: [].concat(campaign.character || []),
       };
     })
     .filter(Boolean)
