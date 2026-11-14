@@ -14,7 +14,7 @@
   </div>
   <div class="post-toc">{{ ui.chapters(contents, 'Contents') }}</div>
   <article class="prose post-article" data-pagefind-body data-pagefind-filter="type:Blog">
-    {{ ui.searchMeta('Blog', c.key if c else 'fu') }}
+    {{ ui.searchMeta(kicker, c.key if c else 'fu', c.ogImage if c else null) }}
     {{ content | enhance | safe }}
   </article>
 </main>
