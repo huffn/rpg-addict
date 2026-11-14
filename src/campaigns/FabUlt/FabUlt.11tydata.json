@@ -1,6 +1,10 @@
 {
   "campaign": {
     "key": "fu",
+    "accent": {
+      "dark": "#e6bf6a",
+      "light": "#946410"
+    },
     "folder": "FabUlt",
     "name": "Astral Covenant",
     "system": "Fabula Ultima",

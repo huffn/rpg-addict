@@ -12,8 +12,7 @@ const COLORS = {
   bg: '#0b1226', line: '#5d78c4', inner: '#2c3f78', box: '#0f1834',
   chip: '#3a4f8a', chipText: '#c4cde6', muted: '#9aa6c8', text: '#e9edf8', white: '#ffffff',
 };
-// Dark-mode accent per campaign key (match the --ac tokens in styles.css)
-const ACCENTS = { fu: '#e6bf6a', com: '#5fd0c4', tox: '#b9a3ff' };
+// Accent color comes from the campaign's dark-mode "accent" (og-data in layouts/base.html)
 const LOGO = '#e6bf6a';
 
 const ART = { x: 646, y: 76, size: 478, pad: 8 };
@@ -80,7 +79,7 @@ export default async function (eleventyConfig) {
 }
 
 async function createImage({ kicker, title, date, minutes, image, accent }) {
-  const ac = ACCENTS[accent] || ACCENTS.fu;
+  const ac = /^#[0-9a-f]{3,8}$/i.test(accent || '') ? accent : LOGO;
   const canvas = createCanvas(W, H);
   const ctx = canvas.getContext('2d');
 

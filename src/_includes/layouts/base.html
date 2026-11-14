@@ -31,6 +31,11 @@
     <link rel="preload" href="/assets/fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/source-serif-4-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/styles.css">
+    <style>{% for camp in campaigns %}{% if camp.accent %}
+      [data-campaign={{ camp.key }}] { --ac: {{ camp.accent.dark }}; }
+      [data-theme=light][data-campaign={{ camp.key }}], [data-theme=light] [data-campaign={{ camp.key }}] { --ac: {{ camp.accent.light }}; }
+    {%- endif %}{% endfor %}
+    </style>
     <script src="/js/site.js" type="module"></script>
     <script type="application/json" id="og-data">{{ {
       kicker: kicker,
@@ -38,7 +43,7 @@
       date: (date | luxonDate('LLL d, yyyy')) if date else '',
       minutes: minutes,
       image: ogImage or (c.ogImage if c else ''),
-      accent: c.key if c else 'fu'
+      accent: c.accent.dark if (c and c.accent) else ''
     } | dump | safe }}</script>
 </head>
 <body>

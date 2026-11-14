@@ -22,6 +22,7 @@ export default function () {
         name: campaign.name || campaign.system,
         url: `/campaigns/${entry.name}/`,
         party: campaign.party || [],
+        accent: validAccent(campaign.accent, file),
         // "character" may be one { name, page } or a list of them (e.g. a solo campaign)
         characters: [].concat(campaign.character || []),
       };
@@ -31,4 +32,12 @@ export default function () {
       (a.status === 'active' ? 0 : 1) - (b.status === 'active' ? 0 : 1) ||
       String(b.started).localeCompare(String(a.started))
     );
+}
+
+/** { dark, light } hex colors, or null (the site's gold is used) if missing or malformed. */
+function validAccent(accent, file) {
+  const hex = (v) => typeof v === 'string' && /^#[0-9a-f]{3,8}$/i.test(v);
+  if (accent && hex(accent.dark) && hex(accent.light)) return accent;
+  if (accent) console.warn(`[campaigns] ${file}: "accent" needs "dark" and "light" hex colors; using the default.`);
+  return null;
 }

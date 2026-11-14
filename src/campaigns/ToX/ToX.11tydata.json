@@ -1,6 +1,10 @@
 {
   "campaign": {
     "key": "tox",
+    "accent": {
+      "dark": "#b9a3ff",
+      "light": "#6a4fc4"
+    },
     "folder": "ToX",
     "name": "The Corrupted Core",
     "system": "Tales of Xadia",

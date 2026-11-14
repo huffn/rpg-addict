@@ -2,11 +2,42 @@
 
 Everything is a file edit under `src/`. Preview with `npm start`, then commit and push to `main`; the push deploys the site to GitHub Pages.
 
+The quickest way to create these files is with the Obsidian templates in `templates/` (see [Obsidian templates](#obsidian-templates)). The sections below describe what the templates do, so you can also make the files by hand.
+
+- [Obsidian templates](#obsidian-templates)
 - [1. New campaign in a new system](#1-new-campaign-in-a-new-system)
 - [2. New campaign in a system you've used before](#2-new-campaign-in-a-system-youve-used-before)
 - [3. New recap](#3-new-recap)
 - [4. New blog post](#4-new-blog-post)
 - [5. Character page](#5-character-page)
+
+## Obsidian templates
+
+`templates/` holds four [Templater](https://github.com/SilentVoid13/Templater) templates. Each one asks a few questions, then creates the files with the right front matter in the right folder:
+
+| Template | Asks for | Creates |
+| --- | --- | --- |
+| New campaign | name, system, folder, key, start month, accent color, emblem, banner, party | the campaign folder, data file, campaign page and recaps folder |
+| New recap | campaign, date, session number, title, next session date | `recaps/YY-MM-DD.md` in that campaign |
+| New blog post | title, game system | `src/blog/<title>.md` |
+| New character | campaign, name, page name, portrait, whether you play them | the character page, linked from the campaign's data file |
+
+### One-time setup
+
+1. In Obsidian, open **Settings → Community plugins**, turn off Restricted mode if it's on, then **Browse**, find **Templater**, install it and enable it.
+2. In **Settings → Templater**, set **Template folder location** to `templates`.
+3. Optional: under **Template hotkeys**, add a hotkey for the templates you use most, such as `templates/New recap.md`.
+4. Optional: turn on **Automatic jump to cursor**, so the cursor lands where you start writing.
+
+Don't use Obsidian's built-in **Templates: Insert template** command on these files; it would paste the script instead of running it.
+
+### Using a template
+
+1. Open the command palette (⌘P) and run **Templater: Create new note from template**, or press its hotkey.
+2. Pick the template and answer the prompts. Press Enter to accept a suggested answer; press Escape to cancel, which removes the empty note.
+3. The note moves into place and opens, ready to write.
+
+Add any images to `src/assets/` before you start, so they're in the image lists. The newest images are listed first.
 
 ## 1. New campaign in a new system
 
@@ -19,6 +50,7 @@ Everything is a file edit under `src/`. Preview with `npm start`, then commit an
    {
      "campaign": {
        "key": "dh",
+       "accent": { "dark": "#ff8a7a", "light": "#b03a2e" },
        "folder": "DagHrt",
        "name": "Campaign Name",
        "system": "Daggerheart",
@@ -36,7 +68,8 @@ Everything is a file edit under `src/`. Preview with `npm start`, then commit an
    }
    ```
 
-   - `key` is a short unique ID that picks the accent color (step 7).
+   - `key` is a short unique ID that ties the campaign's pages to its accent color.
+   - `accent` is the campaign's color: `dark` for dark mode (bright enough to read on navy) and `light` for light mode (dark enough to read on white). Without it, the campaign uses Fabula Ultima's gold.
    - `folder` must match the folder name.
    - Leave out `heroImage` and `heroAlt` if there's no banner.
 
@@ -53,23 +86,12 @@ Everything is a file edit under `src/`. Preview with `npm start`, then commit an
    - `index.md`
    - `recaps.11tydata.json`
 
-7. **Pick an accent color.** In `src/css/styles.css`, under "Campaign accents", add a dark-mode and a light-mode value for the new key:
-
-   ```css
-   [data-campaign=dh] { --ac: #ff8a7a; }
-   [data-theme=light][data-campaign=dh], [data-theme=light] [data-campaign=dh] { --ac: #b03a2e; }
-   ```
-
-8. **Match the color in link previews.** In `eleventy-generate-og-image.js`, add the dark-mode value to `ACCENTS`, for example `dh: '#ff8a7a'`.
-
-If you skip steps 7 and 8, the campaign uses Fabula Ultima's gold.
-
 ## 2. New campaign in a system you've used before
 
 Follow section 1, except:
 
 - **Step 1:** skip it and point `ogImage` at the existing emblem, for example `src/assets/FabulaUltima-square.jpg`.
-- **Steps 7–8:** still give the campaign its own `key` and color, so the two campaigns look different. To have them share a color, reuse the old campaign's key and skip both steps.
+- Still give the campaign its own `key` and `accent`, so the two campaigns look different.
 
 If the new campaign replaces one that's ending, edit the old campaign's data file and set:
 
