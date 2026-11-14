@@ -85,6 +85,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter('neighbors', helpers.neighbors);
   eleventyConfig.addFilter('sessionOf', helpers.sessionOf);
   eleventyConfig.addFilter('withStatus', helpers.withStatus);
+  eleventyConfig.addFilter('byActivity', helpers.byActivity);
 
   eleventyConfig.addCollection("blogPosts", (collectionApi) => {
     return collectionApi.getFilteredByTag("blog-post").sort((a, b) => b.date - a.date);

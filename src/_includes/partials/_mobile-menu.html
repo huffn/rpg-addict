@@ -14,7 +14,7 @@
       Search recaps, characters and posts
     </button>
     <nav class="panel menu-panel" aria-label="Main">
-      {% for c in campaigns %}{% if c.status == 'active' %}
+      {% for c in campaigns | byActivity(collections.recap) %}{% if c.status == 'active' %}
       <a class="menu-row blip{% if section == c.folder %} is-current{% endif %}" href="{{ c.url }}" data-campaign="{{ c.key }}"{% if section == c.folder %} aria-current="true"{% endif %}>
         <span class="cursor" aria-hidden="true">▶</span>
         <span class="menu-row-main"><span class="menu-row-title">{{ c.name }}</span>{% if c.name != c.system %}<span class="menu-row-sub">{{ c.system }}</span>{% endif %}</span>
