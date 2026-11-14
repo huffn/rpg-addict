@@ -78,6 +78,7 @@ const presets = [
   ['Gold', '#e6bf6a', '#946410'], ['Teal', '#5fd0c4', '#0d7268'], ['Violet', '#b9a3ff', '#6a4fc4'],
   ['Coral', '#ff8a7a', '#b03a2e'], ['Green', '#8fd694', '#2f7a3a'], ['Blue', '#7fb2ff', '#2a5db0'],
   ['Rose', '#f59ac0', '#a8366a'], ['Orange', '#ffb366', '#a45a10'],
+  ['Antique bronze', '#e0a060', '#93581c'], ['Dusk coral', '#f2958a', '#b0453c'],
 ];
 const free = presets.filter(([, dark]) => !used.has(dark));
 const taken = presets.filter(([, dark]) => used.has(dark));
