@@ -1,3 +1,7 @@
+{#- Header shows at most two active campaigns (most recent recap); the rest live under All campaigns -#}
+{%- set headerCampaigns = (campaigns | byActivity(collections.recap) | withStatus('active')).slice(0, 2) -%}
+{%- set inHeader = section and (headerCampaigns[0].folder == section or headerCampaigns[1].folder == section) -%}
+{%- set allCurrent = section == 'all' or (section and section != 'blog' and not inHeader) -%}
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="{{ site.name }}, home">
@@ -5,10 +9,10 @@
       <span class="brand-text" aria-hidden="true"><span class="brand-kicker">Ramblings of an</span><span class="brand-name">RPG Addict</span></span>
     </a>
     <nav class="site-nav" aria-label="Main">
-      {% for c in campaigns %}{% if c.status == 'active' %}
+      {% for c in headerCampaigns %}
       <a href="{{ c.url }}" data-campaign="{{ c.key }}"{% if section == c.folder %} class="is-current" aria-current="{{ 'page' if page.url == c.url else 'true' }}"{% endif %}>{{ c.name }}</a>
-      {% endif %}{% endfor %}
-      <a href="/campaigns/"{% if section == 'all' %} class="is-current" aria-current="{{ 'page' if page.url == '/campaigns/' else 'true' }}"{% endif %}>All campaigns</a>
+      {% endfor %}
+      <a href="/campaigns/"{% if allCurrent %} class="is-current" aria-current="{{ 'page' if page.url == '/campaigns/' else 'true' }}"{% endif %}>All campaigns</a>
       <a href="/blog/"{% if section == 'blog' %} class="is-current" aria-current="{{ 'page' if page.url == '/blog/' else 'true' }}"{% endif %}>Blog</a>
       <button class="btn" type="button" data-search-open aria-haspopup="dialog" aria-controls="search">Search<kbd data-search-key>⌘K</kbd></button>
       <button class="btn" type="button" data-theme-toggle>Light</button>

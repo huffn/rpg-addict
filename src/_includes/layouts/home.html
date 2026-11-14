@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 {% import "partials/_macros.njk" as ui %}
 {% block body %}
-{%- set active = campaigns | withStatus('active') | first -%}
+{%- set active = campaigns | byActivity(collections.recap) | withStatus('active') | first -%}
 {%- set activeRecaps = collections.recap | campaignRecaps(active.folder) if active else [] -%}
 {%- set latest = activeRecaps | last -%}
 {%- set nextDate = active | nextSession(activeRecaps) if active else null -%}
@@ -38,7 +38,7 @@
   <section class="home-section" aria-labelledby="home-campaigns">
     <h2 class="section-label" id="home-campaigns">Campaigns <a href="/campaigns/">All campaigns ▶</a></h2>
     <ul class="campaign-grid">
-      {% for camp in campaigns %}
+      {% for camp in campaigns | byActivity(collections.recap) %}
       {%- set count = collections.recap | campaignRecaps(camp.folder) | sessionCount -%}
       <li data-campaign="{{ camp.key }}">
         <a class="panel card campaign-card" href="{{ camp.url }}">

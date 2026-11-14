@@ -4,7 +4,7 @@
 <main id="main" class="container campaigns-layout">
   <h1 class="page-title">{{ title }}</h1>
   {% for group in ['active', 'complete'] %}
-  {%- set list = campaigns | withStatus(group) -%}
+  {%- set list = campaigns | byActivity(collections.recap) | withStatus(group) -%}
   {% if list.length %}
   <section class="campaigns-group" aria-labelledby="group-{{ group }}">
     <h2 class="section-label{% if group == 'active' %} section-label--accent{% endif %}" id="group-{{ group }}">{{ group }}</h2>
