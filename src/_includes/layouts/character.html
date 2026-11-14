@@ -16,6 +16,7 @@
       <h2 class="label">{{ c.name }}</h2>
       <a class="menu-row blip" href="{{ c.url }}recaps/"><span class="menu-row-title"><span class="only-narrow">{{ c.name }} recaps</span><span class="only-wide">Session Recaps</span></span><span class="menu-row-count">{{ recaps | sessionCount }} <span class="only-narrow">▶</span></span></a>
       <a class="menu-row blip" href="{{ c.url }}"><span class="menu-row-title">Campaign page</span><span class="menu-row-count">▶</span></a>
+      {% for ch in c.characters %}{% if ch.page != page.url %}<a class="menu-row blip" href="{{ ch.page }}"><span class="menu-row-title">{{ ch.name }}</span><span class="menu-row-count">▶</span></a>{% endif %}{% endfor %}
     </nav>
   </aside>
   <article class="prose character-article" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}">

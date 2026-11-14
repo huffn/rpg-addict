@@ -45,7 +45,7 @@
           {{ ui.art(camp.ogImage or camp.heroImage, '', 'campaign-card-art') }}
           <span class="campaign-card-body">
             <span class="campaign-card-head"><span class="campaign-card-name">{{ camp.name }}</span><span class="tag{% if camp.status == 'active' %} tag--accent{% endif %}">{{ 'Active' if camp.status == 'active' else 'Complete' }}</span></span>
-            <span class="campaign-card-meta">{% if camp.name != camp.system %}{{ camp.system }} · {% endif %}{{ count }} sessions{% if camp.character %}<span class="only-wide"> · <span class="accent-text">{{ camp.character.name }}</span></span>{% endif %}</span>
+            <span class="campaign-card-meta">{% if camp.name != camp.system %}{{ camp.system }} · {% endif %}{{ count }} sessions{% if camp.characters.length %}<span class="only-wide"> · <span class="accent-text">{{ camp.characters | characterNames }}</span></span>{% endif %}</span>
           </span>
         </a>
       </li>

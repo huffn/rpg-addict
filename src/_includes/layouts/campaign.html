@@ -26,7 +26,7 @@
       <h2 class="label">Menu</h2>
       <a class="menu-row blip" href="{{ c.url }}recaps/"><span class="menu-row-title">Session Recaps</span><span class="menu-row-count">{{ recaps | sessionCount }} <span class="only-narrow">▶</span></span></a>
       {% if brief %}<a class="menu-row blip" href="{{ brief.url }}"><span class="menu-row-title">{{ brief.data.title }}</span><span class="menu-row-count">0</span></a>{% endif %}
-      {% if c.character %}<a class="menu-row menu-row--stack blip" href="{{ c.character.page }}"><span class="label label--accent">Character</span><span class="menu-row-title">{{ c.character.name }}</span></a>{% endif %}
+      {% for ch in c.characters %}<a class="menu-row menu-row--stack blip" href="{{ ch.page }}"><span class="label label--accent">Character</span><span class="menu-row-title">{{ ch.name }}</span></a>{% endfor %}
       {% if latest and latest.data.session != 0 %}<a class="menu-row menu-row--stack blip" href="{{ latest.url }}"><span class="label label--accent">Latest{% if latest.data.session != null %} · {{ latest.data.session }}{% endif %}</span><span class="menu-row-title">{{ latest.data.title }}</span></a>{% endif %}
     </nav>
     {{ ui.nextPanel(nextDate, '', 'campaign-next') }}

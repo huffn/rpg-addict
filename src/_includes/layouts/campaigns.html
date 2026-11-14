@@ -33,7 +33,7 @@
           <span class="complete-card-body">
             <span class="tag tag--system">{{ camp.system }}</span>
             <span class="complete-card-name">{{ camp.name }}</span>
-            <span class="card-meta">{{ recaps | sessionCount }} sessions{% if camp.started %} · {{ camp.started | monthYear }} – {{ camp.ended | monthYear }}{% endif %}{% if camp.character %} · <span class="accent-text">{{ camp.character.name }}</span>{% endif %}</span>
+            <span class="card-meta">{{ recaps | sessionCount }} sessions{% if camp.started %} · {{ camp.started | monthYear }} – {{ camp.ended | monthYear }}{% endif %}{% if camp.characters.length %} · <span class="accent-text">{{ camp.characters | characterNames }}</span>{% endif %}</span>
           </span>
         </a>
         {% endif %}
