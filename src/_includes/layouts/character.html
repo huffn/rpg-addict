@@ -1,4 +1,5 @@
 {% extends "layouts/base.html" %}
+{% import "partials/_macros.njk" as ui %}
 {% block body %}
 {%- set c = currentCampaign -%}
 {%- set recaps = collections.recap | campaignRecaps(c.folder) -%}
@@ -17,7 +18,8 @@
       <a class="menu-row blip" href="{{ c.url }}"><span class="menu-row-title">Campaign page</span><span class="menu-row-count">▶</span></a>
     </nav>
   </aside>
-  <article class="prose character-article" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}" data-pagefind-meta="kicker:{{ kicker }}, accent:{{ c.key }}{% if portrait %}, image:{{ portrait | replace('src/assets/', '/assets/') }}{% endif %}">
+  <article class="prose character-article" data-pagefind-body data-pagefind-filter="campaign:{{ c.name }}">
+    {{ ui.searchMeta(kicker, c.key, portrait) }}
     {{ content | enhance | safe }}
   </article>
 </main>

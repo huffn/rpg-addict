@@ -2,10 +2,12 @@
   "campaign": {
     "key": "com",
     "folder": "CoM",
+    "name": "Sons of Catalina",
     "system": "City of Mist",
     "started": "2022-10",
     "ended": "2024-05",
     "status": "complete",
+    "ogImage": "src/assets/CityOfMist-square.jpg",
     "character": {
       "name": "Mira Eros",
       "page": "/campaigns/CoM/Mira/"

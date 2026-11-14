@@ -7,13 +7,22 @@
     "started": "2026-02",
     "ended": null,
     "status": "active",
+    "ogImage": "src/assets/FabulaUltima-square.jpg",
     "heroImage": "src/assets/FabulaUltima.jpg",
     "heroAlt": "Astral Covenant – Fabula Ultima",
     "party": [
-      { "name": "Krish" },
-      { "name": "Sabra" },
-      { "name": "Quinlan" },
-      { "name": "Vien" }
+      {
+        "name": "Krish"
+      },
+      {
+        "name": "Sabra"
+      },
+      {
+        "name": "Quinlan"
+      },
+      {
+        "name": "Vien"
+      }
     ]
   }
 }
