@@ -1,6 +1,10 @@
 {
   "campaign": {
     "key": "com",
+    "accent": {
+      "dark": "#5fd0c4",
+      "light": "#0d7268"
+    },
     "folder": "CoM",
     "name": "Sons of Catalina",
     "system": "City of Mist",

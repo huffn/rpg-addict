@@ -35,13 +35,7 @@
   color-scheme: light;
 }
 
-/* Campaign accents (one per campaign; add new ones here with dark + light values) */
-[data-campaign=fu] { --ac: #e6bf6a; }
-[data-theme=light][data-campaign=fu], [data-theme=light] [data-campaign=fu] { --ac: #946410; }
-[data-campaign=com] { --ac: #5fd0c4; }
-[data-theme=light][data-campaign=com], [data-theme=light] [data-campaign=com] { --ac: #0d7268; }
-[data-campaign=tox] { --ac: #b9a3ff; }
-[data-theme=light][data-campaign=tox], [data-theme=light] [data-campaign=tox] { --ac: #6a4fc4; }
+/* Campaign accents come from each campaign's "accent" in its data file (see layouts/base.html) */
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
