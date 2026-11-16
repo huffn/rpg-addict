@@ -12,6 +12,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/js': 'js' });
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
 
+  // Pages with `draft: true` in their front matter are left out of the published build
+  // (no page, no blog list entry, no search entry). `npm start` still shows them for previewing.
+  eleventyConfig.addPreprocessor('drafts', '*', (data) => {
+    if (data.draft && process.env.ELEVENTY_RUN_MODE === 'build') return false;
+  });
+
   eleventyConfig.amendLibrary('md', (mdLib) => {
     mdLib.set({ html: true, linkify: true, typographer: true });
 
