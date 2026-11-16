@@ -1,7 +1,9 @@
 ---
-title: "City of Mist Review: A Campaign Worth Playing Once"
+title: "City of Mist Review: A System Worth Playing Once"
 date: 2024-05-31
-tags: [blog-post, CoM]
+tags:
+  - blog-post
+  - CoM
 showReadingTime: true
 ---
 When our group finished our City of Mist campaign, I realized I had a lot of feelings about the system, both good and bad. We came in as D&D players and spent the first few months trying to figure out what we were doing, so I want to share what worked for us, what didn't, and whether I'd recommend it. (Spoiler: I would, with a few asterisks.)
