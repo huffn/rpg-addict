@@ -11,6 +11,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' });
   eleventyConfig.addPassthroughCopy({ 'src/js': 'js' });
   eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
+  // Favicons live at the site root, where browsers look for them
+  eleventyConfig.addPassthroughCopy({ 'src/favicon': '/' });
 
   // Pages with `draft: true` in their front matter are left out of the published build
   // (no page, no blog list entry, no search entry). `npm start` still shows them for previewing.
