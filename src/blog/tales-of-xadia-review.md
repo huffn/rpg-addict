@@ -43,16 +43,26 @@ Stress was the big one for us. There are six different kinds to keep track of: a
 
 Sometimes it felt complicated for the sake of being complicated, and there were times when the mechanics got in the way of what we actually showed up for, which was telling a good story with our friends.
 
-## What Would Turn My Maybe Into a Yes
+## From Behind the Screen
+I asked our GM what she thought of running it, and she had a lot more good to say about it than I expected.
+
+She liked that there was usually more than one way to solve a problem, and that it didn't always come down to a fight. The published adventure helped with that by giving her ideas for what the party might do, even when we went a completely different direction. It also had easter eggs tied to what was happening in the show, without limiting what we could do as players.
+
+She also liked how the dice pools come together. You pick an attribute, a value, and a distinction, add two of the dice together for your total, and the third becomes the effect die that says how strong the result is. Because so much of that comes from who your character is, your backstory plays a bigger role than in most games, since you're using it in your rolls.
+
+Her complaints lined up with mine. She thought the different types of damage could be simplified, and she felt leveling up wasn't structured enough. You work toward your goals during a story, but you have to wait until the end of that story before you can spend what you earned, so growth can feel a long way off.
+
 If you simplify stress down to fewer types and don't worry too much about exactly how hard each goal is, a lot of the friction goes away, and what's left is a gorgeous world with a narrative core that works. If you love the setting and have a GM who's willing to streamline things, I think Tales of Xadia gets pretty close to a yes.
 
 ## Play It If…
 - You love The Dragon Prince, or you want a fantasy world with great art and lore that gives you answers
 - You like describing what your character does first and figuring out the mechanics second
+- You want your backstory to matter in your rolls, and problems that don't always end in a fight
 - Your group is comfortable house-ruling things to keep them simple
 - You can use the digital character creation tools to get everyone started
 
 ## Skip It If…
 - You want a light system that mostly stays out of your way
+- You like leveling up often, not only at the end of a story
 - Tracking six kinds of stress sounds more like homework than fun
 - You'd rather have one tight system than several subsystems bolted together
