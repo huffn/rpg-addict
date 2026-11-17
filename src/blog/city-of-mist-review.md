@@ -51,6 +51,8 @@ At the end of each session we did **Geeking Out**, where the players share what 
 The **crew theme**, which tracks how the group grows together, felt more like bookkeeping. Ours ended up as a tally at the end of each session, and it's the part I'd trim if your group wants to keep things lighter.
 
 ## Unlearning D&D
+City of Mist is built on the Powered by the Apocalypse system. You describe what you want to do, pick the move that matches it, add up your relevant tags and statuses to get your Power, and roll two six-sided dice plus that Power. A 6 or less is a miss and the MC makes a move, 7 to 9 is a success with complications, and 10 or more is a great success.
+
 The hardest part for our group was unlearning our D&D habits.
 
 In D&D, if you miss an attack you swing again next turn. In City of Mist, you can't repeat an action using the same tags unless the situation has changed, so every action needs to leave a path forward whether you succeed or fail. "I attack the monster" isn't enough on its own. You have to figure out how your action changes the scene, so that if you need to attack the monster again, it's because the story has moved forward.
