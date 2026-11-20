@@ -4,6 +4,11 @@
 // and saves the note as src/campaigns/<Folder>/recaps/YY-MM-DD.md.
 const adapter = app.vault.adapter;
 const target = tp.config.target_file;
+// Insert template would run this on the open note (and move it), so only allow a new, empty note
+if ((await app.vault.read(target)).trim()) {
+  new Notice('Use "Templater: Create new note from template" for this one, not Insert template. Nothing was changed.', 10000);
+  throw new Error('This template creates a new note; run it with "Create new note from template".');
+}
 const stop = async (message) => {
   if (!(await app.vault.read(target)).trim()) await app.vault.trash(target, true);
   throw new Error(message);
